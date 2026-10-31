@@ -1,0 +1,218 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { MapPin, Phone, Mail, MessageCircle, Calendar, ChevronRight, ShieldCheck, Clock } from 'lucide-react';
+import { HOTEL_INFO, ROOMS, getWhatsAppUrl } from '../data/hotelData';
+
+export const Footer: React.FC = () => {
+  return (
+    <footer className="bg-[#181818] text-gray-300 border-t border-gold/20 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+          
+          {/* Brand & Property Story */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-3">
+              <img 
+                src="/images/hotel-madurai-logo.jpg" 
+                alt="Hotel Madurai" 
+                className="w-12 h-12 rounded-full border border-gold/50 object-cover"
+              />
+              <div>
+                <span className="font-serif text-2xl font-bold tracking-luxury text-white block">
+                  HOTEL MADURAI
+                </span>
+                <span className="text-xs uppercase tracking-widest text-gold block">
+                  Udaipur, Rajasthan
+                </span>
+              </div>
+            </div>
+            
+            <p className="text-sm text-gray-400 leading-relaxed">
+              A business class hotel at Udaipur which pampers you with all the facilities and amenities a 21st century traveler expects. Offering fine accommodation, business and recreation facilities in a welcoming family-run atmosphere.
+            </p>
+
+            <div className="pt-2 flex items-center space-x-2 text-xs text-gold">
+              <ShieldCheck className="w-4 h-4 text-gold flex-shrink-0" />
+              <span>Official Property Booking Guarantee</span>
+            </div>
+          </div>
+
+          {/* Accommodation Links */}
+          <div>
+            <h4 className="font-serif text-lg text-white font-semibold mb-5 pb-2 border-b border-gold/30 inline-block">
+              Accommodations
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {ROOMS.map((room) => (
+                <li key={room.id}>
+                  <Link 
+                    to={`/rooms#${room.id}`}
+                    className="flex items-center text-gray-400 hover:text-gold transition group"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5 mr-2 text-gold opacity-60 group-hover:opacity-100 transition" />
+                    <span>{room.name}</span>
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link 
+                  to="/facilities"
+                  className="flex items-center text-gray-400 hover:text-gold transition group"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 mr-2 text-gold opacity-60 group-hover:opacity-100 transition" />
+                  <span>Hotel Facilities & Amenities</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/gallery"
+                  className="flex items-center text-gray-400 hover:text-gold transition group"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 mr-2 text-gold opacity-60 group-hover:opacity-100 transition" />
+                  <span>Photo & Video Gallery</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/testimonials"
+                  className="flex items-center text-gray-400 hover:text-gold transition group"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 mr-2 text-gold opacity-60 group-hover:opacity-100 transition" />
+                  <span>Guest Reviews</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Dining & Experience Links */}
+          <div>
+            <h4 className="font-serif text-lg text-white font-semibold mb-5 pb-2 border-b border-gold/30 inline-block">
+              Dining & Experiences
+            </h4>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link 
+                  to="/restaurant"
+                  className="flex items-center text-gray-400 hover:text-gold transition group"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 mr-2 text-gold opacity-60 group-hover:opacity-100 transition" />
+                  <span>Restaurant & Breakfast Room</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/restaurant-menu"
+                  className="flex items-center text-gray-400 hover:text-gold transition group"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 mr-2 text-gold opacity-60 group-hover:opacity-100 transition" />
+                  <span>Restaurant Menu & Thalis</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/underground-bar"
+                  className="flex items-center text-gray-400 hover:text-gold transition group"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 mr-2 text-gold opacity-60 group-hover:opacity-100 transition" />
+                  <span>Underground Bar</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/facilities#party-hall"
+                  className="flex items-center text-gray-400 hover:text-gold transition group"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 mr-2 text-gold opacity-60 group-hover:opacity-100 transition" />
+                  <span>Party Hall near Bus Stand</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/location"
+                  className="flex items-center text-gray-400 hover:text-gold transition group"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 mr-2 text-gold opacity-60 group-hover:opacity-100 transition" />
+                  <span>Nearby Udaipur Attractions</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Coordinates */}
+          <div>
+            <h4 className="font-serif text-lg text-white font-semibold mb-5 pb-2 border-b border-gold/30 inline-block">
+              Location & Contact
+            </h4>
+            <ul className="space-y-3.5 text-sm">
+              <li className="flex items-start">
+                <MapPin className="w-4 h-4 text-gold mr-3 mt-1 flex-shrink-0" />
+                <span className="text-gray-300">
+                  {HOTEL_INFO.address}
+                </span>
+              </li>
+              <li className="flex items-center">
+                <Clock className="w-4 h-4 text-gold mr-3 flex-shrink-0" />
+                <span className="text-gray-300">
+                  24-Hour Reception & Guest Desk
+                </span>
+              </li>
+              <li className="flex items-center">
+                <Phone className="w-4 h-4 text-gold mr-3 flex-shrink-0" />
+                <a href={`tel:${HOTEL_INFO.phone}`} className="hover:text-gold transition">
+                  {HOTEL_INFO.phone}
+                </a>
+              </li>
+              <li className="flex items-center">
+                <MessageCircle className="w-4 h-4 text-emerald-400 mr-3 flex-shrink-0" />
+                <a 
+                  href={getWhatsAppUrl()} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:text-emerald-300 transition"
+                >
+                  WhatsApp: +91 87419 14825
+                </a>
+              </li>
+              <li className="flex items-center">
+                <Mail className="w-4 h-4 text-gold mr-3 flex-shrink-0" />
+                <a href={`mailto:${HOTEL_INFO.email}`} className="hover:text-gold transition break-all">
+                  {HOTEL_INFO.email}
+                </a>
+              </li>
+            </ul>
+
+            <div className="pt-4">
+              <a
+                href={HOTEL_INFO.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center py-2.5 px-4 bg-gold hover:bg-gold-light text-[#1B1B1B] font-semibold text-xs uppercase tracking-widest transition"
+              >
+                <Calendar className="w-3.5 h-3.5 mr-1.5" />
+                Direct Online Booking
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Credits & Copyright */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
+          <p>© {new Date().getFullYear()} Hotel Madurai, Udaipur. All rights reserved.</p>
+          <div className="flex items-center space-x-6 mt-4 md:mt-0">
+            <Link to="/about" className="hover:text-gold transition">About Us</Link>
+            <Link to="/location" className="hover:text-gold transition">Udaipole Location</Link>
+            <Link to="/contact" className="hover:text-gold transition">Contact & Enquiries</Link>
+            <a 
+              href="https://hotelmaduraiudaipur.nowfloats.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-gray-500 hover:text-gold transition"
+            >
+              Original Portal Archive
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};

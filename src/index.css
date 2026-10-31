@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+  }
+
+  body {
+    background-color: #F8F6F0;
+    color: #242424;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Custom luxury accents and styles */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #B19F6A 0%, #D4C38E 50%, #8C7A4A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #B19F6A 0%, #C4B27D 100%);
+}
+
+.gold-border-glow {
+  border: 1px solid rgba(177, 159, 106, 0.35);
+  transition: all 0.3s ease;
+}
+
+.gold-border-glow:hover {
+  border-color: rgba(177, 159, 106, 0.8);
+  box-shadow: 0 10px 25px -5px rgba(177, 159, 106, 0.15);
+}
+
+.editorial-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.editorial-divider::before,
+.editorial-divider::after {
+  content: '';
+  height: 1px;
+  width: 40px;
+  background-color: #B19F6A;
+  opacity: 0.6;
+}
+
+/* Image zoom hover effect */
+.img-zoom-container {
+  overflow: hidden;
+}
+
+.img-zoom-container img {
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.img-zoom-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F6F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C4B27D;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B19F6A;
+}
