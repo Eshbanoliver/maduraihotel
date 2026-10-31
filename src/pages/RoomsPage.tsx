@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Calendar, 
   MessageCircle, 
   Check, 
-  ShieldCheck, 
-  Star, 
+  Sparkles, 
+  Bed, 
   Wind, 
   Wifi, 
   Tv, 
@@ -12,77 +12,117 @@ import {
   Coffee, 
   Shirt, 
   Car, 
-  Bell 
+  Bell, 
+  ArrowRight, 
+  ShieldCheck 
 } from 'lucide-react';
 import { ROOMS, HOTEL_INFO, getWhatsAppUrl } from '../data/hotelData';
 import { BookingBar } from '../components/BookingBar';
 
 export const RoomsPage: React.FC = () => {
+  const [selectedFilter, setSelectedFilter] = useState<string>('all');
+
+  const filteredRooms = selectedFilter === 'all' 
+    ? ROOMS 
+    : ROOMS.filter(r => r.id === selectedFilter);
+
   return (
-    <div className="bg-ivory min-h-screen">
+    <div className="bg-[#FAF8F5] min-h-screen">
       {/* Header */}
-      <section className="bg-dark text-white py-20 relative overflow-hidden border-b border-gold/20">
+      <section className="bg-[#141414] text-white py-24 relative overflow-hidden border-b border-gold/30">
         <div className="absolute inset-0 opacity-25">
           <img 
             src="/images/room-triple-bed-large.jpg" 
             alt="Hotel Madurai Rooms" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover animate-kenburns"
           />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-          <span className="text-xs uppercase tracking-widest text-gold font-semibold block mb-3">
-            Hotel Madurai Accommodations
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-serif font-bold text-white mb-4">
+          <div className="inline-flex items-center space-x-2 bg-dark/80 px-4 py-1.5 border border-gold/40 text-gold text-xs uppercase tracking-luxury mb-4 font-serif font-bold">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Accommodations Portfolio</span>
+          </div>
+          <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white mb-4">
             Guest Rooms & Suites
           </h1>
-          <div className="w-16 h-[1px] bg-gold mx-auto mb-4" />
-          <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto font-sans">
+          <div className="w-20 h-[1px] bg-gold mx-auto mb-4" />
+          <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto font-sans leading-relaxed">
             Fine accommodations featuring air conditioning, cable/satellite TV, complimentary high-speed WiFi, and private bathrooms with hot & cold shower.
           </p>
         </div>
       </section>
 
       {/* Floating reservation bar */}
-      <section className="relative z-20 -mt-10 max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="relative z-20 -mt-12 max-w-7xl mx-auto px-4 sm:px-6">
         <BookingBar />
       </section>
 
+      {/* Filter Tabs */}
+      <section className="pt-16 pb-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={() => setSelectedFilter('all')}
+              className={`px-6 py-2.5 text-xs uppercase tracking-luxury font-bold border transition ${
+                selectedFilter === 'all'
+                  ? 'bg-gold border-gold text-[#141414] shadow-md'
+                  : 'bg-white border-gold/30 text-gray-700 hover:border-gold'
+              }`}
+            >
+              All Categories ({ROOMS.length})
+            </button>
+            {ROOMS.map(r => (
+              <button
+                key={r.id}
+                onClick={() => setSelectedFilter(r.id)}
+                className={`px-6 py-2.5 text-xs uppercase tracking-luxury font-bold border transition ${
+                  selectedFilter === r.id
+                    ? 'bg-gold border-gold text-[#141414] shadow-md'
+                    : 'bg-white border-gold/30 text-gray-700 hover:border-gold'
+                }`}
+              >
+                {r.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Detailed Room Sections */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-20">
-          {ROOMS.map((room, index) => {
+      <section className="py-12 pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-16">
+          {filteredRooms.map((room, index) => {
             const isReversed = index % 2 === 1;
 
             return (
               <div 
                 key={room.id}
                 id={room.id}
-                className="bg-white border border-gold/30 shadow-luxury overflow-hidden"
+                className="bg-white border border-gold/30 shadow-2xl overflow-hidden hover:border-gold transition-all duration-300"
               >
                 <div className={`grid grid-cols-1 lg:grid-cols-12 gap-0 items-center`}>
                   
                   {/* Image Column */}
                   <div className={`lg:col-span-7 ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}>
-                    <div className="relative aspect-[16/11] overflow-hidden group">
+                    <div className="relative aspect-[16/11] overflow-hidden group bg-dark">
                       <img 
                         src={room.image} 
                         alt={room.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-106"
                       />
-                      <div className="absolute top-4 left-4 bg-dark/85 backdrop-blur-sm px-3.5 py-1.5 border border-gold/50 text-gold text-xs uppercase tracking-widest font-serif font-bold">
+                      <div className="absolute top-4 left-4 bg-[#141414]/90 backdrop-blur-md px-4 py-1.5 border border-gold/50 text-gold text-xs uppercase tracking-luxury font-serif font-bold shadow-lg">
                         {room.idealFor}
                       </div>
                     </div>
 
                     {/* Small Gallery Strip */}
-                    <div className="grid grid-cols-3 gap-1 bg-[#1F1F1F] p-1 border-t border-gold/20">
+                    <div className="grid grid-cols-3 gap-1 bg-[#141414] p-1.5 border-t border-gold/25">
                       {room.galleryImages.map((imgSrc, i) => (
-                        <div key={i} className="aspect-[16/9] overflow-hidden">
+                        <div key={i} className="aspect-[16/9] overflow-hidden border border-white/5">
                           <img 
                             src={imgSrc} 
                             alt={`${room.name} view ${i + 1}`} 
-                            className="w-full h-full object-cover hover:opacity-80 transition"
+                            className="w-full h-full object-cover hover:opacity-85 transition"
                           />
                         </div>
                       ))}
@@ -93,31 +133,31 @@ export const RoomsPage: React.FC = () => {
                   <div className={`lg:col-span-5 p-8 sm:p-12 ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
                     <div className="space-y-6">
                       <div>
-                        <span className="text-xs uppercase tracking-widest text-gold font-semibold block mb-1">
+                        <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-1">
                           Category {index + 1}
                         </span>
-                        <h2 className="text-3xl font-serif font-bold text-dark mb-1">
+                        <h2 className="text-3xl sm:text-4xl font-serif font-bold text-dark mb-1">
                           {room.name}
                         </h2>
-                        <p className="text-xs uppercase tracking-widest text-gray-500 font-medium">
+                        <p className="text-xs uppercase tracking-luxury text-gray-500 font-semibold">
                           {room.tagline}
                         </p>
                       </div>
 
                       {/* Original description verbatim */}
-                      <p className="text-sm text-gray-700 leading-relaxed">
+                      <p className="text-sm text-gray-700 leading-relaxed font-sans">
                         {room.description}
                       </p>
 
                       {/* Features */}
                       <div className="border-t border-gold/20 pt-6">
-                        <h4 className="text-xs uppercase tracking-widest font-semibold text-dark mb-4 flex items-center">
+                        <h4 className="text-xs uppercase tracking-luxury font-bold text-dark mb-4 flex items-center">
                           <span className="w-1.5 h-1.5 bg-gold mr-2" />
-                          Verified Amenities & Features:
+                          Verified In-Room Amenities:
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                           {room.features.map((feat, fIdx) => (
-                            <div key={fIdx} className="flex items-start text-xs text-gray-700">
+                            <div key={fIdx} className="flex items-start text-xs text-gray-700 font-sans">
                               <Check className="w-3.5 h-3.5 text-gold mr-2 mt-0.5 flex-shrink-0" />
                               <span>{feat}</span>
                             </div>
@@ -125,13 +165,13 @@ export const RoomsPage: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Buttons */}
+                      {/* Direct Buttons */}
                       <div className="pt-6 border-t border-gold/20 flex flex-col sm:flex-row gap-3">
                         <a
                           href={HOTEL_INFO.bookingUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 py-3.5 px-4 bg-gold hover:bg-gold-light text-[#1F1F1F] font-semibold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition shadow-md"
+                          className="shimmer-badge flex-1 py-3.5 px-4 bg-gold hover:bg-gold-light text-[#141414] font-bold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition shadow-md"
                         >
                           <Calendar className="w-3.5 h-3.5 mr-2" />
                           Book Online
@@ -140,7 +180,7 @@ export const RoomsPage: React.FC = () => {
                           href={getWhatsAppUrl(room.name)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 py-3.5 px-4 border border-emerald-600 text-emerald-700 hover:bg-emerald-600 hover:text-white font-medium text-xs uppercase tracking-luxury text-center flex items-center justify-center transition"
+                          className="flex-1 py-3.5 px-4 border border-emerald-600 bg-white hover:bg-emerald-600 hover:text-white text-emerald-700 font-semibold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition shadow-sm"
                         >
                           <MessageCircle className="w-3.5 h-3.5 mr-2" />
                           WhatsApp Enquiry
@@ -148,7 +188,7 @@ export const RoomsPage: React.FC = () => {
                       </div>
 
                       <p className="text-[11px] text-gray-500 italic text-center">
-                        * Direct booking opens the official eGlobe reservation portal for live rates and confirmation.
+                        * Direct booking opens the official eGlobe reservation system for live rates and instant confirmation.
                       </p>
                     </div>
                   </div>
@@ -161,21 +201,21 @@ export const RoomsPage: React.FC = () => {
       </section>
 
       {/* Reservation Assistance Section */}
-      <section className="py-16 bg-[#1A1A1A] text-white border-t border-gold/20">
+      <section className="py-20 bg-[#161616] text-white border-t border-gold/30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-4">
-          <span className="text-xs uppercase tracking-widest text-gold font-semibold">
+          <span className="text-xs uppercase tracking-luxury text-gold font-bold">
             Need Guidance Choosing?
           </span>
-          <h3 className="text-2xl sm:text-3xl font-serif font-bold">
+          <h3 className="text-2xl sm:text-4xl font-serif font-bold">
             We Are Here to Assist Your Stay Planning
           </h3>
-          <p className="text-sm text-gray-400 max-w-xl mx-auto">
+          <p className="text-sm text-gray-400 max-w-xl mx-auto font-sans leading-relaxed">
             Our polite and welcoming staff will be happy to assist with group bookings, transfers from Udaipur Railway Station, or specific room preferences.
           </p>
           <div className="pt-4 flex flex-wrap justify-center gap-4">
             <a
               href={`tel:${HOTEL_INFO.phone}`}
-              className="px-6 py-3 bg-gold text-dark font-semibold text-xs uppercase tracking-luxury"
+              className="px-7 py-3.5 bg-gold text-[#141414] font-bold text-xs uppercase tracking-luxury shadow-lg"
             >
               Call Us: {HOTEL_INFO.phone}
             </a>
@@ -183,7 +223,7 @@ export const RoomsPage: React.FC = () => {
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 border border-emerald-500 text-emerald-400 hover:bg-emerald-600 hover:text-white text-xs uppercase tracking-luxury transition"
+              className="px-7 py-3.5 border border-emerald-500 text-emerald-400 hover:bg-emerald-600 hover:text-white text-xs uppercase tracking-luxury font-semibold transition"
             >
               Chat on WhatsApp
             </a>

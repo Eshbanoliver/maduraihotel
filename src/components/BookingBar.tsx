@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Users, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Calendar, Users, ArrowRight, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
 import { HOTEL_INFO, ROOMS } from '../data/hotelData';
 
 export const BookingBar: React.FC = () => {
@@ -12,66 +12,90 @@ export const BookingBar: React.FC = () => {
 
   const handleBookingRedirect = (e: React.FormEvent) => {
     e.preventDefault();
-    // Redirect to verified booking engine URL
+    // Redirects to verified booking engine URL
     window.open(HOTEL_INFO.bookingUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <div className="bg-[#1F1F1F] text-white p-5 sm:p-7 border border-gold/30 shadow-2xl">
-      <div className="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-4 border-b border-white/10 gap-2">
-        <div className="flex items-center space-x-2">
-          <span className="w-2 h-2 bg-gold" />
-          <span className="font-serif text-sm tracking-luxury uppercase text-gold font-semibold">
-            Direct Reservation Portal
+    <div className="bg-[#181818] text-white p-6 sm:p-8 border border-gold/40 shadow-2xl relative overflow-hidden">
+      {/* Decorative luxury background gradient overlay */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Header bar */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between pb-5 mb-5 border-b border-white/10 gap-3 relative z-10">
+        <div className="flex items-center space-x-2.5">
+          <span className="p-1.5 bg-gold/10 border border-gold/40 text-gold">
+            <Sparkles className="w-3.5 h-3.5" />
           </span>
+          <div>
+            <span className="font-serif text-sm tracking-luxury uppercase text-gold font-bold block">
+              Direct Reservation Portal
+            </span>
+            <span className="text-[11px] text-gray-400">
+              Verified Official eGlobe Booking Engine
+            </span>
+          </div>
         </div>
-        <div className="flex items-center space-x-2 text-xs text-gray-400">
-          <ShieldCheck className="w-4 h-4 text-gold" />
-          <span>Official Best Rate Guaranteed • Instant Confirmation</span>
+
+        <div className="flex items-center space-x-4 text-xs text-gray-300">
+          <span className="flex items-center text-emerald-400 font-medium">
+            <CheckCircle2 className="w-3.5 h-3.5 mr-1" />
+            Instant Confirmation
+          </span>
+          <span className="text-gray-600">|</span>
+          <span className="flex items-center text-gold">
+            <ShieldCheck className="w-3.5 h-3.5 mr-1" />
+            Zero Booking Fee
+          </span>
         </div>
       </div>
 
-      <form onSubmit={handleBookingRedirect} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+      {/* Reservation Form */}
+      <form onSubmit={handleBookingRedirect} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-end relative z-10">
         {/* Check In */}
         <div>
-          <label className="block text-[11px] uppercase tracking-widest text-gray-400 font-medium mb-1.5 flex items-center">
+          <label className="block text-[11px] uppercase tracking-luxury text-gray-300 font-semibold mb-2 flex items-center">
             <Calendar className="w-3.5 h-3.5 text-gold mr-1.5" />
             Check-In Date
           </label>
-          <input
-            type="date"
-            value={checkIn}
-            min={today}
-            onChange={(e) => setCheckIn(e.target.value)}
-            className="w-full bg-[#2A2A2A] border border-white/15 px-3 py-2.5 text-sm text-white focus:outline-none focus:border-gold transition"
-          />
+          <div className="relative">
+            <input
+              type="date"
+              value={checkIn}
+              min={today}
+              onChange={(e) => setCheckIn(e.target.value)}
+              className="w-full bg-[#242424] border border-white/20 px-3.5 py-3 text-sm text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition shadow-inner"
+            />
+          </div>
         </div>
 
         {/* Check Out */}
         <div>
-          <label className="block text-[11px] uppercase tracking-widest text-gray-400 font-medium mb-1.5 flex items-center">
+          <label className="block text-[11px] uppercase tracking-luxury text-gray-300 font-semibold mb-2 flex items-center">
             <Calendar className="w-3.5 h-3.5 text-gold mr-1.5" />
             Check-Out Date
           </label>
-          <input
-            type="date"
-            value={checkOut}
-            min={checkIn || today}
-            onChange={(e) => setCheckOut(e.target.value)}
-            className="w-full bg-[#2A2A2A] border border-white/15 px-3 py-2.5 text-sm text-white focus:outline-none focus:border-gold transition"
-          />
+          <div className="relative">
+            <input
+              type="date"
+              value={checkOut}
+              min={checkIn || today}
+              onChange={(e) => setCheckOut(e.target.value)}
+              className="w-full bg-[#242424] border border-white/20 px-3.5 py-3 text-sm text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition shadow-inner"
+            />
+          </div>
         </div>
 
-        {/* Room Category */}
+        {/* Room Preference */}
         <div>
-          <label className="block text-[11px] uppercase tracking-widest text-gray-400 font-medium mb-1.5 flex items-center">
+          <label className="block text-[11px] uppercase tracking-luxury text-gray-300 font-semibold mb-2 flex items-center">
             <Users className="w-3.5 h-3.5 text-gold mr-1.5" />
-            Room Preference
+            Room Category
           </label>
           <select
             value={selectedRoom}
             onChange={(e) => setSelectedRoom(e.target.value)}
-            className="w-full bg-[#2A2A2A] border border-white/15 px-3 py-2.5 text-sm text-white focus:outline-none focus:border-gold transition"
+            className="w-full bg-[#242424] border border-white/20 px-3.5 py-3 text-sm text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition shadow-inner"
           >
             <option value="all">All Room Categories</option>
             {ROOMS.map((r) => (
@@ -82,14 +106,14 @@ export const BookingBar: React.FC = () => {
           </select>
         </div>
 
-        {/* Submit */}
+        {/* Submit Button */}
         <div>
           <button
             type="submit"
-            className="w-full py-2.5 px-6 bg-gold hover:bg-gold-light text-[#1F1F1F] font-semibold text-xs uppercase tracking-luxury flex items-center justify-center transition shadow-md group"
+            className="shimmer-badge w-full py-3.5 px-6 bg-gold hover:bg-gold-light text-[#141414] font-bold text-xs uppercase tracking-luxury flex items-center justify-center transition-all duration-300 shadow-xl group hover:scale-[1.02]"
           >
             <span>Check Availability</span>
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition" />
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition duration-200" />
           </button>
         </div>
       </form>

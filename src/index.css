@@ -6,84 +6,173 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+    color-scheme: light;
   }
 
   body {
-    background-color: #F8F6F0;
-    color: #242424;
+    background-color: #FAF8F5;
+    color: #222222;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', Georgia, serif;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
 }
 
-/* Custom luxury accents and styles */
+/* Luxury Royal Gold Gradient utilities */
 .gold-gradient-text {
-  background: linear-gradient(135deg, #B19F6A 0%, #D4C38E 50%, #8C7A4A 100%);
+  background: linear-gradient(135deg, #DFD09E 0%, #B19F6A 40%, #8C7A4A 80%, #DFD09E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shineText 8s linear infinite;
 }
 
 .gold-gradient-bg {
-  background: linear-gradient(135deg, #B19F6A 0%, #C4B27D 100%);
+  background: linear-gradient(135deg, #C5B37E 0%, #B19F6A 50%, #9C8855 100%);
 }
 
+.gold-gradient-subtle {
+  background: linear-gradient(135deg, rgba(177, 159, 106, 0.12) 0%, rgba(177, 159, 106, 0.03) 100%);
+}
+
+.dark-gradient-bg {
+  background: linear-gradient(180deg, #181818 0%, #121212 100%);
+}
+
+/* Luxury card and border treatments */
 .gold-border-glow {
-  border: 1px solid rgba(177, 159, 106, 0.35);
-  transition: all 0.3s ease;
+  border: 1px solid rgba(177, 159, 106, 0.3);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .gold-border-glow:hover {
-  border-color: rgba(177, 159, 106, 0.8);
-  box-shadow: 0 10px 25px -5px rgba(177, 159, 106, 0.15);
+  border-color: rgba(177, 159, 106, 0.85);
+  box-shadow: 0 15px 35px -10px rgba(177, 159, 106, 0.22), 0 0 15px rgba(177, 159, 106, 0.12);
+  transform: translateY(-3px);
 }
 
+.glass-panel-dark {
+  background: rgba(22, 22, 22, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(177, 159, 106, 0.25);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(177, 159, 106, 0.25);
+}
+
+/* Editorial divider */
 .editorial-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .editorial-divider::before,
 .editorial-divider::after {
   content: '';
   height: 1px;
-  width: 40px;
-  background-color: #B19F6A;
-  opacity: 0.6;
+  width: 50px;
+  background: linear-gradient(90deg, transparent, #B19F6A, transparent);
+  opacity: 0.8;
 }
 
-/* Image zoom hover effect */
+/* Image zoom and vignette */
 .img-zoom-container {
   overflow: hidden;
+  position: relative;
 }
 
 .img-zoom-container img {
-  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.8s ease;
 }
 
 .img-zoom-container:hover img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
-/* Custom scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 9px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F8F6F0;
+  background: #FAF8F5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C4B27D;
+  background: #C5B37E;
   border-radius: 4px;
+  border: 2px solid #FAF8F5;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B19F6A;
+  background: #9C8855;
+}
+
+/* Animations */
+@keyframes shineText {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06) translate(-1%, -1%);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns 24s ease-in-out infinite alternate;
+}
+
+@keyframes floatSoft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: floatSoft 5s ease-in-out infinite;
+}
+
+/* Shimmer badge */
+.shimmer-badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-badge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  animation: shimmer 3.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    left: 100%;
+  }
 }
