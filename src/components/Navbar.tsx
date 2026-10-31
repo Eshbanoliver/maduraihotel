@@ -92,8 +92,8 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <header className="sticky top-0 z-50 transition-all duration-300">
-        {/* Top Luxury Announcement Bar */}
-        <div className="bg-[#101010] text-xs text-gray-300 border-b border-gold/20 hidden md:block">
+        {/* Top Luxury Announcement Bar - visible on large screens */}
+        <div className="bg-[#101010] text-xs text-gray-300 border-b border-gold/20 hidden lg:block">
           <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 py-2 flex justify-between items-center">
             
             <div className="flex items-center space-x-6 text-[11px]">
@@ -159,10 +159,10 @@ export const Navbar: React.FC = () => {
                 </span>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-lg sm:text-xl xl:text-2xl font-bold tracking-luxury text-white group-hover:text-gold transition duration-200 whitespace-nowrap">
+                <span className="font-serif text-base sm:text-xl xl:text-2xl font-bold tracking-luxury text-white group-hover:text-gold transition duration-200 whitespace-nowrap">
                   HOTEL MADURAI
                 </span>
-                <span className="text-[9.5px] sm:text-[10px] tracking-widest uppercase text-gold/90 font-sans font-semibold -mt-0.5 flex items-center whitespace-nowrap">
+                <span className="text-[8.5px] sm:text-[10px] tracking-widest uppercase text-gold/90 font-sans font-semibold -mt-0.5 flex items-center whitespace-nowrap">
                   <span>UDAIPUR</span>
                   <span className="mx-1.5 opacity-50">•</span>
                   <span>RAJASTHAN</span>
@@ -171,7 +171,7 @@ export const Navbar: React.FC = () => {
             </Link>
 
             {/* Desktop Navigation Links - Perfectly spaced without colliding */}
-            <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+            <div className="hidden xl:flex items-center space-x-1 2xl:space-x-2">
               {/* Home */}
               <Link
                 to="/"
@@ -389,8 +389,8 @@ export const Navbar: React.FC = () => {
               </a>
             </div>
 
-            {/* Mobile Menu Hamburger */}
-            <div className="lg:hidden flex items-center space-x-2">
+            {/* Mobile / Tablet Menu Hamburger */}
+            <div className="xl:hidden flex items-center space-x-2">
               <a
                 href={HOTEL_INFO.bookingUrl}
                 target="_blank"
@@ -410,9 +410,9 @@ export const Navbar: React.FC = () => {
 
           </div>
 
-          {/* Mobile Navigation Drawer */}
+          {/* Mobile / Tablet Navigation Drawer */}
           {isOpen && (
-            <div className="lg:hidden bg-[#161616]/98 backdrop-blur-xl border-t border-gold/25 px-6 py-6 shadow-2xl animate-fadeIn">
+            <div className="xl:hidden bg-[#161616]/98 backdrop-blur-xl border-t border-gold/25 px-5 sm:px-8 py-6 shadow-2xl animate-fadeIn max-h-[calc(100vh-72px)] overflow-y-auto overscroll-contain">
               <div className="flex flex-col space-y-1">
                 {mobileNavLinks.map((link) => (
                   <Link

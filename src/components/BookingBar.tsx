@@ -17,33 +17,33 @@ export const BookingBar: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#181818] text-white p-6 sm:p-8 border border-gold/40 shadow-2xl relative overflow-hidden">
+    <div className="bg-[#181818] text-white p-4 sm:p-6 lg:p-8 border border-gold/40 shadow-2xl relative overflow-hidden">
       {/* Decorative luxury background gradient overlay */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between pb-5 mb-5 border-b border-white/10 gap-3 relative z-10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 sm:pb-5 mb-5 border-b border-white/10 gap-3 relative z-10">
         <div className="flex items-center space-x-2.5">
-          <span className="p-1.5 bg-gold/10 border border-gold/40 text-gold">
+          <span className="p-1.5 bg-gold/10 border border-gold/40 text-gold flex-shrink-0">
             <Sparkles className="w-3.5 h-3.5" />
           </span>
           <div>
-            <span className="font-serif text-sm tracking-luxury uppercase text-gold font-bold block">
+            <span className="font-serif text-xs sm:text-sm tracking-luxury uppercase text-gold font-bold block">
               Direct Reservation Portal
             </span>
-            <span className="text-[11px] text-gray-400">
+            <span className="text-[10px] sm:text-[11px] text-gray-400">
               Verified Official eGlobe Booking Engine
             </span>
           </div>
         </div>
 
-        <div className="flex items-center space-x-4 text-xs text-gray-300">
-          <span className="flex items-center text-emerald-400 font-medium">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs text-gray-300">
+          <span className="flex items-center text-emerald-400 font-medium whitespace-nowrap">
             <CheckCircle2 className="w-3.5 h-3.5 mr-1" />
             Instant Confirmation
           </span>
-          <span className="text-gray-600">|</span>
-          <span className="flex items-center text-gold">
+          <span className="text-gray-600 hidden sm:inline">|</span>
+          <span className="flex items-center text-gold whitespace-nowrap">
             <ShieldCheck className="w-3.5 h-3.5 mr-1" />
             Zero Booking Fee
           </span>

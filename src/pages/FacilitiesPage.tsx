@@ -72,9 +72,9 @@ export const FacilitiesPage: React.FC = () => {
       </section>
 
       {/* Category Filter Pills */}
-      <section className="py-8 bg-white border-b border-gold/20">
+      <section className="py-6 sm:py-8 bg-white border-b border-gold/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {[
               { id: 'all', label: 'All Facilities' },
               { id: 'comfort', label: 'Room Comforts' },
@@ -85,7 +85,7 @@ export const FacilitiesPage: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setSelectedCategory(tab.id)}
-                className={`px-5 py-2 text-xs uppercase tracking-luxury font-bold border transition ${
+                className={`px-3.5 sm:px-5 py-2 text-[11px] sm:text-xs uppercase tracking-luxury font-bold border transition ${
                   selectedCategory === tab.id
                     ? 'bg-gold border-gold text-[#141414] shadow-md'
                     : 'bg-[#FAF8F5] border-gold/30 text-gray-700 hover:border-gold'
@@ -99,14 +99,14 @@ export const FacilitiesPage: React.FC = () => {
       </section>
 
       {/* Facilities Grid */}
-      <section className="py-20">
+      <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredFacilities.map((facility) => (
               <div 
                 key={facility.id} 
                 id={facility.id}
-                className="bg-white border border-gold/30 p-8 shadow-card-subtle hover:border-gold hover:shadow-2xl transition duration-300 flex flex-col justify-between group hover:-translate-y-1"
+                className="bg-white border border-gold/30 p-6 sm:p-8 shadow-card-subtle hover:border-gold hover:shadow-2xl transition duration-300 flex flex-col justify-between group hover:-translate-y-1"
               >
                 <div>
                   <div className="p-3.5 bg-[#FAF8F5] inline-block border border-gold/40 mb-6 group-hover:bg-gold group-hover:text-dark transition duration-300">

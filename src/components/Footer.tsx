@@ -196,9 +196,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Credits & Copyright */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-400 font-sans">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-400 font-sans gap-4 text-center md:text-left">
           <p>© {new Date().getFullYear()} Hotel Madurai, Udaipur. All rights reserved.</p>
-          <div className="flex items-center space-x-6 mt-4 md:mt-0">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
             <Link to="/about" className="hover:text-gold transition">About Us</Link>
             <Link to="/location" className="hover:text-gold transition">Udaipole Location</Link>
             <Link to="/contact" className="hover:text-gold transition">Contact & Enquiries</Link>

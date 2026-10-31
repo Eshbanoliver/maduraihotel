@@ -22,7 +22,7 @@ export function App() {
       <div className="min-h-screen flex flex-col bg-ivory text-dark font-sans selection:bg-gold selection:text-white">
         <Navbar />
 
-        <main className="flex-1">
+        <main className="flex-1 pb-16 sm:pb-0">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />

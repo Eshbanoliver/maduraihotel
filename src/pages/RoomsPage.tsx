@@ -58,12 +58,12 @@ export const RoomsPage: React.FC = () => {
       </section>
 
       {/* Filter Tabs */}
-      <section className="pt-16 pb-4">
+      <section className="pt-12 sm:pt-16 pb-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             <button
               onClick={() => setSelectedFilter('all')}
-              className={`px-6 py-2.5 text-xs uppercase tracking-luxury font-bold border transition ${
+              className={`px-4 sm:px-6 py-2 sm:py-2.5 text-xs uppercase tracking-luxury font-bold border transition ${
                 selectedFilter === 'all'
                   ? 'bg-gold border-gold text-[#141414] shadow-md'
                   : 'bg-white border-gold/30 text-gray-700 hover:border-gold'
@@ -75,7 +75,7 @@ export const RoomsPage: React.FC = () => {
               <button
                 key={r.id}
                 onClick={() => setSelectedFilter(r.id)}
-                className={`px-6 py-2.5 text-xs uppercase tracking-luxury font-bold border transition ${
+                className={`px-4 sm:px-6 py-2 sm:py-2.5 text-xs uppercase tracking-luxury font-bold border transition ${
                   selectedFilter === r.id
                     ? 'bg-gold border-gold text-[#141414] shadow-md'
                     : 'bg-white border-gold/30 text-gray-700 hover:border-gold'
@@ -90,7 +90,7 @@ export const RoomsPage: React.FC = () => {
 
       {/* Detailed Room Sections */}
       <section className="py-12 pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
           {filteredRooms.map((room, index) => {
             const isReversed = index % 2 === 1;
 
@@ -110,7 +110,7 @@ export const RoomsPage: React.FC = () => {
                         alt={room.name}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-106"
                       />
-                      <div className="absolute top-4 left-4 bg-[#141414]/90 backdrop-blur-md px-4 py-1.5 border border-gold/50 text-gold text-xs uppercase tracking-luxury font-serif font-bold shadow-lg">
+                      <div className="absolute top-4 left-4 bg-[#141414]/90 backdrop-blur-md px-3.5 sm:px-4 py-1.5 border border-gold/50 text-gold text-xs uppercase tracking-luxury font-serif font-bold shadow-lg">
                         {room.idealFor}
                       </div>
                     </div>
@@ -130,7 +130,7 @@ export const RoomsPage: React.FC = () => {
                   </div>
 
                   {/* Details Column */}
-                  <div className={`lg:col-span-5 p-8 sm:p-12 ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <div className={`lg:col-span-5 p-6 sm:p-8 lg:p-10 xl:p-12 ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
                     <div className="space-y-6">
                       <div>
                         <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-1">

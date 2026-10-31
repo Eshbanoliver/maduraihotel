@@ -44,15 +44,15 @@ export const RestaurantMenuPage: React.FC = () => {
       <section className="py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* Offering 1: Continental Breakfast */}
-            <div className="bg-white p-8 sm:p-10 border border-gold/30 shadow-luxury hover:border-gold transition">
+            <div className="bg-white p-6 sm:p-8 lg:p-10 border border-gold/30 shadow-luxury hover:border-gold transition">
               <div className="flex items-center space-x-4 mb-5">
-                <div className="p-3.5 bg-[#FAF8F5] border border-gold/40 text-gold shadow-sm">
+                <div className="p-3.5 bg-[#FAF8F5] border border-gold/40 text-gold shadow-sm flex-shrink-0">
                   <Coffee className="w-7 h-7" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-2xl font-bold text-dark">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-dark">
                     Rich Continental Breakfast
                   </h3>
                   <span className="text-xs text-gold uppercase tracking-luxury font-bold">
@@ -78,13 +78,13 @@ export const RestaurantMenuPage: React.FC = () => {
             </div>
 
             {/* Offering 2: Famous Family Thali */}
-            <div className="bg-white p-8 sm:p-10 border border-gold/30 shadow-luxury hover:border-gold transition">
+            <div className="bg-white p-6 sm:p-8 lg:p-10 border border-gold/30 shadow-luxury hover:border-gold transition">
               <div className="flex items-center space-x-4 mb-5">
-                <div className="p-3.5 bg-[#FAF8F5] border border-gold/40 text-gold shadow-sm">
+                <div className="p-3.5 bg-[#FAF8F5] border border-gold/40 text-gold shadow-sm flex-shrink-0">
                   <Utensils className="w-7 h-7" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-2xl font-bold text-dark">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-dark">
                     Traditional Family Thali
                   </h3>
                   <span className="text-xs text-gold uppercase tracking-luxury font-bold">
@@ -111,7 +111,7 @@ export const RestaurantMenuPage: React.FC = () => {
           </div>
 
           {/* Clean Menu Placeholder Notice (Strict adherence: zero invented fake dishes or fake prices) */}
-          <div className="bg-white p-8 sm:p-14 border-2 border-dashed border-gold/60 shadow-xl text-center space-y-6">
+          <div className="bg-white p-6 sm:p-10 lg:p-14 border-2 border-dashed border-gold/60 shadow-xl text-center space-y-6">
             <div className="w-16 h-16 rounded-full bg-[#FAF8F5] border-2 border-gold/50 flex items-center justify-center mx-auto text-gold shadow-inner">
               <FileText className="w-8 h-8" />
             </div>

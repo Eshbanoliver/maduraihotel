@@ -6,7 +6,7 @@ export const WhatsAppButton: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end">
+    <div className="hidden sm:flex fixed bottom-6 right-6 z-40 flex-col items-end">
       {/* Popover helper */}
       {showTooltip && (
         <div className="mb-3 p-4 bg-white border border-gold/40 shadow-xl max-w-xs text-xs text-gray-700 animate-fadeIn relative">

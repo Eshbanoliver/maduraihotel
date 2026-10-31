@@ -41,9 +41,9 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Main About Story Section (Exact Original Text Preserved) */}
-      <section className="py-24">
+      <section className="py-16 sm:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="bg-white p-8 sm:p-16 border border-gold/30 shadow-2xl space-y-8">
+          <div className="bg-white p-6 sm:p-10 lg:p-16 border border-gold/30 shadow-2xl space-y-8">
             <div className="flex items-center space-x-2">
               <span className="w-8 h-[1px] bg-gold" />
               <span className="text-xs uppercase tracking-luxury text-gold font-bold">
@@ -55,7 +55,7 @@ export const AboutPage: React.FC = () => {
               "Hotel Madurai is a business class hotel at Udaipur which pampers you with all the facilities and amenities a 21st century traveler expects."
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-gray-700 leading-relaxed text-sm sm:text-base font-sans">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 text-gray-700 leading-relaxed text-sm sm:text-base font-sans">
               <div className="space-y-4">
                 <p>
                   The hotel offers guests fine accommodation, business and recreation facilities at a very affordable price i.e. <strong>A/C Rooms, cable/satellite TV, private bath with hot and cold shower and room service.</strong>
@@ -66,7 +66,7 @@ export const AboutPage: React.FC = () => {
               </div>
 
               <div className="space-y-4">
-                <p className="bg-[#FAF8F5] p-6 border-l-4 border-gold text-dark italic font-serif leading-relaxed shadow-sm">
+                <p className="bg-[#FAF8F5] p-5 sm:p-6 border-l-4 border-gold text-dark italic font-serif leading-relaxed shadow-sm">
                   "You will feel right at home when you try our rich continental breakfast, which may be enjoyed in our cozy breakfast room. Enjoy your stay at Hotel Madurai."
                 </p>
                 <p>
@@ -115,7 +115,7 @@ export const AboutPage: React.FC = () => {
             </div>
 
             {/* Direct CTA Bar */}
-            <div className="pt-8 border-t border-gold/20 flex flex-wrap gap-4 items-center justify-between">
+            <div className="pt-8 border-t border-gold/20 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
               <div>
                 <span className="text-xs text-gray-500 block uppercase tracking-wider font-semibold">
                   Reservations & Enquiries:
@@ -123,12 +123,12 @@ export const AboutPage: React.FC = () => {
                 <span className="font-serif font-bold text-dark text-xl">{HOTEL_INFO.phone}</span>
               </div>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 w-full sm:w-auto">
                 <a
                   href={HOTEL_INFO.bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="shimmer-badge px-7 py-3.5 bg-gold hover:bg-gold-light text-[#141414] font-bold text-xs uppercase tracking-luxury shadow-lg transition"
+                  className="shimmer-badge flex-1 sm:flex-none text-center px-6 sm:px-7 py-3.5 bg-gold hover:bg-gold-light text-[#141414] font-bold text-xs uppercase tracking-luxury shadow-lg transition"
                 >
                   <Calendar className="w-3.5 h-3.5 inline mr-1.5 -mt-0.5" />
                   Book Now
@@ -137,7 +137,7 @@ export const AboutPage: React.FC = () => {
                   href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-7 py-3.5 border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-600 hover:text-white font-bold text-xs uppercase tracking-luxury transition"
+                  className="flex-1 sm:flex-none text-center px-6 sm:px-7 py-3.5 border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-600 hover:text-white font-bold text-xs uppercase tracking-luxury transition"
                 >
                   <MessageCircle className="w-3.5 h-3.5 inline mr-1.5 -mt-0.5" />
                   WhatsApp

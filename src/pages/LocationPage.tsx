@@ -46,7 +46,7 @@ export const LocationPage: React.FC = () => {
             
             {/* Address & Connectivity Card */}
             <div className="lg:col-span-5 space-y-8">
-              <div className="bg-white p-8 sm:p-10 border border-gold/30 shadow-luxury space-y-6">
+              <div className="bg-white p-6 sm:p-8 lg:p-10 border border-gold/30 shadow-luxury space-y-6">
                 <div>
                   <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-2">
                     Official Property Address
@@ -54,19 +54,19 @@ export const LocationPage: React.FC = () => {
                   <h2 className="text-2xl sm:text-3xl font-serif font-bold text-dark mb-4">
                     Hotel Madurai, Udaipur
                   </h2>
-                  <div className="p-5 bg-[#FAF8F5] border-l-4 border-gold text-sm text-gray-800 leading-relaxed font-medium">
+                  <div className="p-4 sm:p-5 bg-[#FAF8F5] border-l-4 border-gold text-xs sm:text-sm text-gray-800 leading-relaxed font-medium">
                     {HOTEL_INFO.address}
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-xs">
-                  <div className="p-3.5 bg-[#FAF8F5] border border-gold/25">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs">
+                  <div className="p-3 sm:p-3.5 bg-[#FAF8F5] border border-gold/25">
                     <span className="text-gray-500 block">Latitude:</span>
-                    <span className="font-mono font-bold text-dark text-sm">24.5771753° N</span>
+                    <span className="font-mono font-bold text-dark text-xs sm:text-sm">24.5771753° N</span>
                   </div>
-                  <div className="p-3.5 bg-[#FAF8F5] border border-gold/25">
+                  <div className="p-3 sm:p-3.5 bg-[#FAF8F5] border border-gold/25">
                     <span className="text-gray-500 block">Longitude:</span>
-                    <span className="font-mono font-bold text-dark text-sm">73.7012260° E</span>
+                    <span className="font-mono font-bold text-dark text-xs sm:text-sm">73.7012260° E</span>
                   </div>
                 </div>
 

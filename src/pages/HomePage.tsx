@@ -64,22 +64,22 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-white leading-[1.12] mb-6">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-white leading-[1.15] mb-6">
               Comfort & Elegance in the Heart of <span className="gold-gradient-text">Udaipur</span>.
             </h1>
 
             {/* Authentic Subtitle */}
-            <p className="text-base sm:text-xl text-gray-200 font-normal leading-relaxed mb-8 max-w-2xl font-sans">
+            <p className="text-sm sm:text-lg text-gray-200 font-normal leading-relaxed mb-8 max-w-2xl font-sans">
               Hotel Madurai is a business class hotel at Udaipur which pampers you with all the facilities and amenities a 21st century traveler expects — fine accommodation, cozy family-run hospitality, and prime connectivity in Udaipole.
             </p>
 
             {/* Hero Action CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
               <a
                 href={HOTEL_INFO.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shimmer-badge py-4 px-8 bg-gold hover:bg-gold-light text-[#141414] font-bold text-xs uppercase tracking-luxury shadow-2xl transition-all duration-300 hover:scale-[1.03] flex items-center"
+                className="shimmer-badge py-3.5 sm:py-4 px-7 sm:px-8 bg-gold hover:bg-gold-light text-[#141414] font-bold text-xs uppercase tracking-luxury shadow-2xl transition-all duration-300 hover:scale-[1.03] flex items-center justify-center text-center"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 Book Online Direct
@@ -89,7 +89,7 @@ export const HomePage: React.FC = () => {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-4 px-7 border border-emerald-400 bg-emerald-950/40 hover:bg-emerald-600 text-emerald-300 hover:text-white font-semibold text-xs uppercase tracking-luxury backdrop-blur-md transition-all duration-300 flex items-center shadow-lg"
+                className="py-3.5 sm:py-4 px-6 sm:px-7 border border-emerald-400 bg-emerald-950/40 hover:bg-emerald-600 text-emerald-300 hover:text-white font-semibold text-xs uppercase tracking-luxury backdrop-blur-md transition-all duration-300 flex items-center justify-center text-center shadow-lg"
               >
                 <MessageCircle className="w-4 h-4 mr-2 text-emerald-400 group-hover:text-white" />
                 WhatsApp Enquiry
@@ -97,7 +97,7 @@ export const HomePage: React.FC = () => {
 
               <Link
                 to="/rooms"
-                className="py-4 px-7 border border-white/25 text-white hover:border-gold hover:text-gold text-xs uppercase tracking-luxury transition font-medium backdrop-blur-sm"
+                className="py-3.5 sm:py-4 px-6 sm:px-7 border border-white/25 text-white hover:border-gold hover:text-gold text-xs uppercase tracking-luxury transition font-medium backdrop-blur-sm flex items-center justify-center text-center"
               >
                 Explore Rooms
               </Link>
@@ -129,42 +129,42 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* STATS & CREDENTIALS STRIP */}
-      <section className="py-12 bg-white border-b border-gold/20">
+      <section className="py-10 sm:py-12 bg-white border-b border-gold/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gold/20">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
             
-            <div className="pt-4 md:pt-0">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-dark block mb-1">
+            <div className="p-4 sm:p-5 bg-[#FAF8F5]/80 border border-gold/20 shadow-sm">
+              <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-dark block mb-1">
                 3 Star
               </span>
-              <span className="text-xs uppercase tracking-luxury text-gold font-semibold block">
+              <span className="text-[11px] sm:text-xs uppercase tracking-luxury text-gold font-semibold block">
                 Business & Family Class
               </span>
             </div>
 
-            <div className="pt-4 md:pt-0">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-dark block mb-1">
+            <div className="p-4 sm:p-5 bg-[#FAF8F5]/80 border border-gold/20 shadow-sm">
+              <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-dark block mb-1">
                 3 Categories
               </span>
-              <span className="text-xs uppercase tracking-luxury text-gold font-semibold block">
+              <span className="text-[11px] sm:text-xs uppercase tracking-luxury text-gold font-semibold block">
                 Super Deluxe, Triple & Deluxe
               </span>
             </div>
 
-            <div className="pt-4 md:pt-0">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-dark block mb-1">
+            <div className="p-4 sm:p-5 bg-[#FAF8F5]/80 border border-gold/20 shadow-sm">
+              <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-dark block mb-1">
                 &lt; 500m
               </span>
-              <span className="text-xs uppercase tracking-luxury text-gold font-semibold block">
+              <span className="text-[11px] sm:text-xs uppercase tracking-luxury text-gold font-semibold block">
                 To Udaipole Bus Stand
               </span>
             </div>
 
-            <div className="pt-4 md:pt-0">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-dark block mb-1">
+            <div className="p-4 sm:p-5 bg-[#FAF8F5]/80 border border-gold/20 shadow-sm">
+              <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-dark block mb-1">
                 24 / 7
               </span>
-              <span className="text-xs uppercase tracking-luxury text-gold font-semibold block">
+              <span className="text-[11px] sm:text-xs uppercase tracking-luxury text-gold font-semibold block">
                 Reception & Station Transfers
               </span>
             </div>
@@ -174,13 +174,13 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 2. ABOUT US EDITORIAL SECTION */}
-      <section className="py-24 bg-[#FAF8F5]">
+      <section className="py-16 sm:py-24 bg-[#FAF8F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
             {/* Visual Column */}
             <div className="lg:col-span-5 relative">
-              <div className="relative border-2 border-gold/40 p-3 bg-white shadow-2xl">
+              <div className="relative border-2 border-gold/40 p-2 sm:p-3 bg-white shadow-2xl">
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
                     src="/images/room-triple-bed-large.jpg"
@@ -190,12 +190,12 @@ export const HomePage: React.FC = () => {
                 </div>
                 
                 {/* Floating Prestige Badge */}
-                <div className="absolute -bottom-6 -right-6 bg-[#161616] text-white p-6 border border-gold/50 shadow-2xl max-w-xs hidden sm:block">
-                  <HeartHandshake className="w-8 h-8 text-gold mb-2" />
-                  <span className="text-gold font-serif text-xl font-bold block mb-1">
+                <div className="hidden md:block absolute -bottom-5 right-0 lg:-right-6 bg-[#161616] text-white p-5 sm:p-6 border border-gold/50 shadow-2xl max-w-xs">
+                  <HeartHandshake className="w-7 h-7 text-gold mb-2" />
+                  <span className="text-gold font-serif text-lg sm:text-xl font-bold block mb-1">
                     Family-Run Warmth
                   </span>
-                  <span className="text-xs text-gray-300 leading-relaxed block">
+                  <span className="text-xs text-gray-300 leading-relaxed block font-sans">
                     Polite, welcoming staff happy to provide curated local dining and sightseeing advice.
                   </span>
                 </div>
@@ -466,7 +466,7 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Photographic Grid */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="border border-gold/30 p-2 bg-white shadow-xl">
                   <img

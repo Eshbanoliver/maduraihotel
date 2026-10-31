@@ -111,7 +111,7 @@ export const RestaurantPage: React.FC = () => {
             </div>
 
             {/* Photographic Grid */}
-            <div className="lg:col-span-6 grid grid-cols-2 gap-4">
+            <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="border border-gold/30 p-2 bg-white shadow-xl">
                   <img

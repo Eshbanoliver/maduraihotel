@@ -141,26 +141,26 @@ export const RoomCard: React.FC<RoomCardProps> = ({ room, featured = false }) =>
       </div>
 
       {/* Action Footer */}
-      <div className="px-6 sm:px-7 pb-6 pt-3 bg-ivory/60 border-t border-gold/20 flex flex-col sm:flex-row items-center gap-3">
+      <div className="px-5 sm:px-7 pb-6 pt-3 bg-ivory/60 border-t border-gold/20 flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center lg:items-stretch xl:items-center gap-2.5">
         <a
           href={HOTEL_INFO.bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full sm:flex-1 py-3 px-4 bg-gold hover:bg-gold-light text-[#141414] font-bold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition shadow-md hover:shadow-lg group/btn"
+          className="w-full sm:flex-1 py-3 px-3 sm:px-4 bg-gold hover:bg-gold-light text-[#141414] font-bold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition shadow-md hover:shadow-lg group/btn whitespace-nowrap"
         >
-          <Calendar className="w-3.5 h-3.5 mr-2" />
+          <Calendar className="w-3.5 h-3.5 mr-1.5" />
           <span>Book Online</span>
-          <ArrowRight className="w-3.5 h-3.5 ml-1.5 opacity-70 group-hover/btn:translate-x-1 transition duration-200" />
+          <ArrowRight className="w-3.5 h-3.5 ml-1 opacity-70 group-hover/btn:translate-x-1 transition duration-200" />
         </a>
 
         <a
           href={getWhatsAppUrl(room.name)}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full sm:flex-1 py-3 px-4 border border-emerald-600 bg-white hover:bg-emerald-600 hover:text-white text-emerald-700 font-semibold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition duration-200 shadow-sm"
+          className="w-full sm:flex-1 py-3 px-3 sm:px-4 border border-emerald-600 bg-white hover:bg-emerald-600 hover:text-white text-emerald-700 font-semibold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition duration-200 shadow-sm whitespace-nowrap"
         >
-          <MessageCircle className="w-3.5 h-3.5 mr-2" />
-          WhatsApp
+          <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
+          <span>WhatsApp</span>
         </a>
       </div>
     </div>

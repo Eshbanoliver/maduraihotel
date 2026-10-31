@@ -78,20 +78,20 @@ Message: ${formData.message || 'I would like to enquire about room availability.
             <div className="lg:col-span-5 space-y-6">
               
               {/* Phone Card */}
-              <div className="bg-white p-7 sm:p-8 border border-gold/30 shadow-card-subtle flex items-start space-x-5 hover:border-gold transition">
-                <div className="p-4 bg-[#FAF8F5] border border-gold/40 text-gold flex-shrink-0">
-                  <Phone className="w-7 h-7" />
+              <div className="bg-white p-5 sm:p-7 border border-gold/30 shadow-card-subtle flex items-start space-x-4 sm:space-x-5 hover:border-gold transition">
+                <div className="p-3.5 sm:p-4 bg-[#FAF8F5] border border-gold/40 text-gold flex-shrink-0">
+                  <Phone className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
                 <div>
                   <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-1">
                     Call Direct
                   </span>
-                  <h3 className="font-serif text-2xl font-bold text-dark mb-1">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-dark mb-1">
                     Phone Inquiries
                   </h3>
                   <a 
                     href={`tel:${HOTEL_INFO.phone}`} 
-                    className="text-lg text-gray-800 hover:text-gold transition font-bold block"
+                    className="text-base sm:text-lg text-gray-800 hover:text-gold transition font-bold block"
                   >
                     {HOTEL_INFO.phone}
                   </a>
@@ -102,22 +102,22 @@ Message: ${formData.message || 'I would like to enquire about room availability.
               </div>
 
               {/* WhatsApp Card */}
-              <div className="bg-white p-7 sm:p-8 border border-emerald-500/40 shadow-card-subtle flex items-start space-x-5 hover:border-emerald-500 transition">
-                <div className="p-4 bg-emerald-50 text-emerald-600 border border-emerald-300 flex-shrink-0">
-                  <MessageCircle className="w-7 h-7" />
+              <div className="bg-white p-5 sm:p-7 border border-emerald-500/40 shadow-card-subtle flex items-start space-x-4 sm:space-x-5 hover:border-emerald-500 transition">
+                <div className="p-3.5 sm:p-4 bg-emerald-50 text-emerald-600 border border-emerald-300 flex-shrink-0">
+                  <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
                 <div>
                   <span className="text-xs uppercase tracking-luxury text-emerald-600 font-bold block mb-1">
                     Instant Messaging
                   </span>
-                  <h3 className="font-serif text-2xl font-bold text-dark mb-1">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-dark mb-1">
                     WhatsApp Enquiry
                   </h3>
                   <a 
                     href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg text-gray-800 hover:text-emerald-600 transition font-bold block"
+                    className="text-base sm:text-lg text-gray-800 hover:text-emerald-600 transition font-bold block"
                   >
                     +91 87419 14825
                   </a>
@@ -128,15 +128,15 @@ Message: ${formData.message || 'I would like to enquire about room availability.
               </div>
 
               {/* Email Card */}
-              <div className="bg-white p-7 sm:p-8 border border-gold/30 shadow-card-subtle flex items-start space-x-5 hover:border-gold transition">
-                <div className="p-4 bg-[#FAF8F5] border border-gold/40 text-gold flex-shrink-0">
-                  <Mail className="w-7 h-7" />
+              <div className="bg-white p-5 sm:p-7 border border-gold/30 shadow-card-subtle flex items-start space-x-4 sm:space-x-5 hover:border-gold transition">
+                <div className="p-3.5 sm:p-4 bg-[#FAF8F5] border border-gold/40 text-gold flex-shrink-0">
+                  <Mail className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
                 <div>
                   <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-1">
                     Email Correspondence
                   </span>
-                  <h3 className="font-serif text-2xl font-bold text-dark mb-1">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-dark mb-1">
                     Official Email
                   </h3>
                   <a 
@@ -152,15 +152,15 @@ Message: ${formData.message || 'I would like to enquire about room availability.
               </div>
 
               {/* Address Card */}
-              <div className="bg-white p-7 sm:p-8 border border-gold/30 shadow-card-subtle flex items-start space-x-5 hover:border-gold transition">
-                <div className="p-4 bg-[#FAF8F5] border border-gold/40 text-gold flex-shrink-0">
-                  <MapPin className="w-7 h-7" />
+              <div className="bg-white p-5 sm:p-7 border border-gold/30 shadow-card-subtle flex items-start space-x-4 sm:space-x-5 hover:border-gold transition">
+                <div className="p-3.5 sm:p-4 bg-[#FAF8F5] border border-gold/40 text-gold flex-shrink-0">
+                  <MapPin className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
                 <div>
                   <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-1">
                     Property Location
                   </span>
-                  <h3 className="font-serif text-2xl font-bold text-dark mb-1">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-dark mb-1">
                     Physical Address
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-sans">
@@ -181,7 +181,7 @@ Message: ${formData.message || 'I would like to enquire about room availability.
             </div>
 
             {/* Right: Contact Form */}
-            <div className="lg:col-span-7 bg-white p-8 sm:p-14 border border-gold/30 shadow-2xl">
+            <div className="lg:col-span-7 bg-white p-6 sm:p-10 lg:p-14 border border-gold/30 shadow-2xl">
               <div className="mb-8">
                 <div className="flex items-center space-x-2 mb-2">
                   <span className="w-8 h-[1px] bg-gold" />
