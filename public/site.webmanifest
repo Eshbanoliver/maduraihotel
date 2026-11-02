@@ -1,0 +1,17 @@
+{
+  "name": "Hotel Madurai Udaipur",
+  "short_name": "Hotel Madurai",
+  "description": "Hotel Madurai Udaipur | 3-Star Business Class & Family Hotel",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8F6F0",
+  "theme_color": "#B19F6A",
+  "icons": [
+    {
+      "src": "/images/hotel-madurai-logo.jpg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
+
