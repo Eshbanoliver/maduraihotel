@@ -197,7 +197,18 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Credits & Copyright */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-400 font-sans gap-4 text-center md:text-left">
-          <p>© {new Date().getFullYear()} Hotel Madurai, Udaipur. All rights reserved.</p>
+          <p>
+            ©️ Copyright 2026 | Hotel Madurai Udaipur | All Rights Reserved | Powered by{' '}
+            <a 
+              href="https://www.futurexdigitalmarketing.com/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: '#28a745' }}
+              className="hover:underline font-medium"
+            >
+              FutureX Digital Marketing
+            </a>
+          </p>
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
             <Link to="/about" className="hover:text-gold transition">About Us</Link>
             <Link to="/location" className="hover:text-gold transition">Udaipole Location</Link>
