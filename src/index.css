@@ -23,49 +23,114 @@
 
 /* Luxury Royal Gold Gradient utilities */
 .gold-gradient-text {
-  background: linear-gradient(135deg, #DFD09E 0%, #B19F6A 40%, #8C7A4A 80%, #DFD09E 100%);
+  background: linear-gradient(135deg, #FFF1C5 0%, #E5C158 35%, #C5A059 65%, #9E7D36 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% auto;
-  animation: shineText 8s linear infinite;
+  animation: shineText 7s linear infinite;
+}
+
+.emerald-gradient-text {
+  background: linear-gradient(135deg, #6EE7B7 0%, #10B981 50%, #047857 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .gold-gradient-bg {
-  background: linear-gradient(135deg, #C5B37E 0%, #B19F6A 50%, #9C8855 100%);
+  background: linear-gradient(135deg, #E5C158 0%, #C5A059 50%, #9E7D36 100%);
 }
 
 .gold-gradient-subtle {
-  background: linear-gradient(135deg, rgba(177, 159, 106, 0.12) 0%, rgba(177, 159, 106, 0.03) 100%);
+  background: linear-gradient(135deg, rgba(229, 193, 88, 0.15) 0%, rgba(197, 160, 89, 0.05) 100%);
+}
+
+.emerald-gradient-subtle {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 78, 59, 0.04) 100%);
 }
 
 .dark-gradient-bg {
-  background: linear-gradient(180deg, #181818 0%, #121212 100%);
+  background: linear-gradient(180deg, #1C1C1C 0%, #101010 100%);
+}
+
+/* Ambient glow & backdrop effects */
+.hero-glow-gold {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(229, 193, 88, 0.22) 0%, rgba(197, 160, 89, 0.05) 50%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.hero-glow-emerald {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(6, 95, 70, 0.04) 50%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
 }
 
 /* Luxury card and border treatments */
 .gold-border-glow {
-  border: 1px solid rgba(177, 159, 106, 0.3);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(229, 193, 88, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .gold-border-glow:hover {
-  border-color: rgba(177, 159, 106, 0.85);
-  box-shadow: 0 15px 35px -10px rgba(177, 159, 106, 0.22), 0 0 15px rgba(177, 159, 106, 0.12);
-  transform: translateY(-3px);
+  border-color: rgba(229, 193, 88, 0.9);
+  box-shadow: 0 16px 38px -8px rgba(197, 160, 89, 0.26), 0 0 20px rgba(229, 193, 88, 0.18);
+  transform: translateY(-4px);
+}
+
+.card-elevated {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-elevated:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12), 0 0 1px 1px rgba(197, 160, 89, 0.3);
 }
 
 .glass-panel-dark {
-  background: rgba(22, 22, 22, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(177, 159, 106, 0.25);
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(229, 193, 88, 0.28);
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(177, 159, 106, 0.25);
+  border: 1px solid rgba(197, 160, 89, 0.28);
+}
+
+/* Button & Badge polish */
+.gold-glow-button {
+  background: linear-gradient(135deg, #E5C158 0%, #C5A059 60%, #9E7D36 100%);
+  color: #121212;
+  font-weight: 700;
+  box-shadow: 0 8px 24px -4px rgba(197, 160, 89, 0.45);
+  transition: all 0.3s ease;
+}
+
+.gold-glow-button:hover {
+  background: linear-gradient(135deg, #F3D67B 0%, #D4AF37 60%, #B38F2E 100%);
+  box-shadow: 0 12px 32px -4px rgba(229, 193, 88, 0.65), 0 0 16px rgba(229, 193, 88, 0.3);
+  transform: translateY(-2px);
+}
+
+.emerald-glow-button {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  box-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.45);
+  transition: all 0.3s ease;
+}
+
+.emerald-glow-button:hover {
+  background: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+  box-shadow: 0 12px 32px -4px rgba(16, 185, 129, 0.65);
+  transform: translateY(-2px);
 }
 
 /* Editorial divider */

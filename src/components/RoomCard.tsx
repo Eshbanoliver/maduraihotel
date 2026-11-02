@@ -25,13 +25,39 @@ export const RoomCard: React.FC<RoomCardProps> = ({ room, featured = false }) =>
   const [activeImage, setActiveImage] = useState<string>(room.image);
   const [expanded, setExpanded] = useState<boolean>(false);
 
+  // Distinctive colored badge based on room
+  const getRibbonBadge = () => {
+    if (room.id === 'super-deluxe-room') {
+      return (
+        <div className="bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 text-dark px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider shadow-lg flex items-center space-x-1">
+          <Sparkles className="w-3.5 h-3.5 text-dark" />
+          <span>★ Guest Favorite Suite</span>
+        </div>
+      );
+    }
+    if (room.id === 'triple-bed-room') {
+      return (
+        <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider shadow-lg flex items-center space-x-1">
+          <Bed className="w-3.5 h-3.5 text-emerald-200" />
+          <span>Family & Group Choice</span>
+        </div>
+      );
+    }
+    return (
+      <div className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider shadow-lg flex items-center space-x-1">
+        <Sparkles className="w-3.5 h-3.5 text-sky-300" />
+        <span>Executive Value</span>
+      </div>
+    );
+  };
+
   return (
     <div 
       id={room.id}
-      className={`bg-white rounded-none border transition-all duration-500 flex flex-col justify-between overflow-hidden group ${
+      className={`bg-white rounded-none border-2 transition-all duration-500 flex flex-col justify-between overflow-hidden group ${
         featured 
-          ? 'border-gold shadow-2xl ring-1 ring-gold/40' 
-          : 'border-gold/30 hover:border-gold shadow-luxury'
+          ? 'border-gold shadow-2xl ring-2 ring-gold/30 hover:-translate-y-2' 
+          : 'border-gold/30 hover:border-gold hover:shadow-2xl hover:-translate-y-2 shadow-luxury'
       }`}
     >
       <div>
@@ -40,23 +66,22 @@ export const RoomCard: React.FC<RoomCardProps> = ({ room, featured = false }) =>
           <img 
             src={activeImage} 
             alt={room.name} 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-dark/85 via-dark/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/30 to-transparent" />
           
-          {/* Badge */}
-          <div className="absolute top-4 left-4 bg-[#181818]/90 backdrop-blur-md px-3.5 py-1.5 border border-gold/50 text-gold text-[11px] uppercase tracking-luxury font-serif font-bold shadow-md flex items-center space-x-1.5">
-            <Sparkles className="w-3 h-3 text-gold" />
-            <span>{room.idealFor}</span>
+          {/* Top Left Ribbon */}
+          <div className="absolute top-3 left-3 z-10">
+            {getRibbonBadge()}
           </div>
 
           {/* Heading overlay */}
-          <div className="absolute bottom-4 left-5 right-5">
-            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-wide">
+          <div className="absolute bottom-4 left-5 right-5 z-10">
+            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-wide drop-shadow-md">
               {room.name}
             </h3>
-            <p className="text-xs text-gold/90 font-medium tracking-luxury uppercase">
+            <p className="text-xs text-gold-bright font-semibold tracking-luxury uppercase">
               {room.tagline}
             </p>
           </div>
@@ -64,15 +89,15 @@ export const RoomCard: React.FC<RoomCardProps> = ({ room, featured = false }) =>
 
         {/* Small Thumbnail Gallery Selector */}
         {room.galleryImages.length > 1 && (
-          <div className="flex bg-[#181818] p-1.5 gap-1.5 border-b border-gold/20">
+          <div className="flex bg-[#141414] p-2 gap-2 border-b border-gold/30">
             {room.galleryImages.map((imgSrc, i) => (
               <button
                 key={i}
                 type="button"
                 onClick={() => setActiveImage(imgSrc)}
-                className={`relative flex-1 aspect-[16/9] overflow-hidden border transition ${
+                className={`relative flex-1 aspect-[16/9] overflow-hidden border-2 transition ${
                   activeImage === imgSrc 
-                    ? 'border-gold ring-1 ring-gold' 
+                    ? 'border-gold ring-1 ring-gold opacity-100 scale-[1.02]' 
                     : 'border-transparent opacity-60 hover:opacity-100'
                 }`}
                 aria-label={`View photo ${i + 1} of ${room.name}`}
@@ -89,27 +114,27 @@ export const RoomCard: React.FC<RoomCardProps> = ({ room, featured = false }) =>
             {room.description}
           </p>
 
-          {/* Key Feature Badges */}
+          {/* Key Feature Badges with Colorful Accents */}
           <div className="flex flex-wrap gap-2 mb-6">
-            <span className="inline-flex items-center text-[11px] bg-ivory px-2.5 py-1 text-gray-700 border border-gold/25">
-              <Wind className="w-3 h-3 text-gold mr-1" />
+            <span className="inline-flex items-center text-[11px] font-semibold bg-sky-50 text-sky-800 border border-sky-200 px-2.5 py-1">
+              <Wind className="w-3.5 h-3.5 text-sky-600 mr-1.5" />
               Split AC
             </span>
-            <span className="inline-flex items-center text-[11px] bg-ivory px-2.5 py-1 text-gray-700 border border-gold/25">
-              <Wifi className="w-3 h-3 text-gold mr-1" />
+            <span className="inline-flex items-center text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-1">
+              <Wifi className="w-3.5 h-3.5 text-emerald-600 mr-1.5" />
               Free WiFi
             </span>
-            <span className="inline-flex items-center text-[11px] bg-ivory px-2.5 py-1 text-gray-700 border border-gold/25">
-              <Tv className="w-3 h-3 text-gold mr-1" />
+            <span className="inline-flex items-center text-[11px] font-semibold bg-indigo-50 text-indigo-800 border border-indigo-200 px-2.5 py-1">
+              <Tv className="w-3.5 h-3.5 text-indigo-600 mr-1.5" />
               LED TV
             </span>
-            <span className="inline-flex items-center text-[11px] bg-ivory px-2.5 py-1 text-gray-700 border border-gold/25">
-              <Bath className="w-3 h-3 text-gold mr-1" />
+            <span className="inline-flex items-center text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-1">
+              <Bath className="w-3.5 h-3.5 text-amber-600 mr-1.5" />
               Hot/Cold Shower
             </span>
-            <span className="inline-flex items-center text-[11px] bg-ivory px-2.5 py-1 text-gray-700 border border-gold/25">
-              <Coffee className="w-3 h-3 text-gold mr-1" />
-              Tea Maker
+            <span className="inline-flex items-center text-[11px] font-semibold bg-rose-50 text-rose-800 border border-rose-200 px-2.5 py-1">
+              <Coffee className="w-3.5 h-3.5 text-rose-600 mr-1.5" />
+              Tea/Coffee Maker
             </span>
           </div>
 
@@ -117,20 +142,20 @@ export const RoomCard: React.FC<RoomCardProps> = ({ room, featured = false }) =>
           <div className="border-t border-gold/20 pt-4">
             <button
               onClick={() => setExpanded(!expanded)}
-              className="w-full flex items-center justify-between text-xs uppercase tracking-luxury font-bold text-dark hover:text-gold transition py-1"
+              className="w-full flex items-center justify-between text-xs uppercase tracking-luxury font-bold text-dark hover:text-gold transition py-1 cursor-pointer"
             >
               <span className="flex items-center">
-                <span className="w-1.5 h-1.5 bg-gold mr-2" />
+                <span className="w-2 h-2 rounded-full bg-emerald-500 mr-2" />
                 Verified In-Room Amenities ({room.features.length})
               </span>
               {expanded ? <ChevronUp className="w-4 h-4 text-gold" /> : <ChevronDown className="w-4 h-4 text-gold" />}
             </button>
 
             {expanded && (
-              <div className="mt-4 pt-3 border-t border-gold/15 grid grid-cols-1 sm:grid-cols-2 gap-2 animate-fadeIn">
+              <div className="mt-4 pt-3 border-t border-gold/15 grid grid-cols-1 sm:grid-cols-2 gap-2 animate-fadeIn bg-ivory/60 p-3.5 border border-gold/20">
                 {room.features.map((feat, idx) => (
                   <div key={idx} className="flex items-start text-xs text-gray-700">
-                    <Check className="w-3.5 h-3.5 text-gold mr-2 mt-0.5 flex-shrink-0" />
+                    <Check className="w-3.5 h-3.5 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" />
                     <span>{feat}</span>
                   </div>
                 ))}
@@ -141,26 +166,26 @@ export const RoomCard: React.FC<RoomCardProps> = ({ room, featured = false }) =>
       </div>
 
       {/* Action Footer */}
-      <div className="px-5 sm:px-7 pb-6 pt-3 bg-ivory/60 border-t border-gold/20 flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center lg:items-stretch xl:items-center gap-2.5">
+      <div className="px-5 sm:px-7 pb-6 pt-4 bg-gradient-to-r from-amber-50/70 via-ivory to-emerald-50/60 border-t border-gold/30 flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center lg:items-stretch xl:items-center gap-2.5">
         <a
           href={HOTEL_INFO.bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full sm:flex-1 py-3 px-3 sm:px-4 bg-gold hover:bg-gold-light text-[#141414] font-bold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition shadow-md hover:shadow-lg group/btn whitespace-nowrap"
+          className="gold-glow-button w-full sm:flex-1 py-3 px-3 sm:px-4 text-[#121212] font-bold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition shadow-md group/btn whitespace-nowrap cursor-pointer"
         >
           <Calendar className="w-3.5 h-3.5 mr-1.5" />
           <span>Book Online</span>
-          <ArrowRight className="w-3.5 h-3.5 ml-1 opacity-70 group-hover/btn:translate-x-1 transition duration-200" />
+          <ArrowRight className="w-3.5 h-3.5 ml-1 opacity-80 group-hover/btn:translate-x-1.5 transition duration-200" />
         </a>
 
         <a
           href={getWhatsAppUrl(room.name)}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full sm:flex-1 py-3 px-3 sm:px-4 border border-emerald-600 bg-white hover:bg-emerald-600 hover:text-white text-emerald-700 font-semibold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition duration-200 shadow-sm whitespace-nowrap"
+          className="w-full sm:flex-1 py-3 px-3 sm:px-4 border-2 border-emerald-600 bg-emerald-50/80 hover:bg-emerald-600 hover:text-white text-emerald-700 font-bold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition duration-200 shadow-sm whitespace-nowrap"
         >
-          <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
-          <span>WhatsApp</span>
+          <MessageCircle className="w-3.5 h-3.5 mr-1.5 text-emerald-600 hover:text-white" />
+          <span>WhatsApp Desk</span>
         </a>
       </div>
     </div>

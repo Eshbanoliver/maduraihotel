@@ -382,10 +382,10 @@ export const Navbar: React.FC = () => {
                 href={HOTEL_INFO.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shimmer-badge inline-flex items-center justify-center px-5 py-2.5 text-xs uppercase tracking-luxury font-bold bg-gold hover:bg-gold-light text-[#141414] shadow-lg transition-all duration-200 hover:scale-[1.03] active:scale-95 whitespace-nowrap"
+                className="gold-glow-button shimmer-badge inline-flex items-center justify-center px-5 py-2.5 text-xs uppercase tracking-luxury font-bold text-[#121212] shadow-lg transition-all duration-200 hover:scale-[1.03] active:scale-95 whitespace-nowrap cursor-pointer"
               >
                 <Calendar className="w-3.5 h-3.5 mr-1.5" />
-                Book Now
+                Book Direct
               </a>
             </div>
 

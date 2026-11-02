@@ -152,13 +152,13 @@ export const RoomsPage: React.FC = () => {
                       {/* Features */}
                       <div className="border-t border-gold/20 pt-6">
                         <h4 className="text-xs uppercase tracking-luxury font-bold text-dark mb-4 flex items-center">
-                          <span className="w-1.5 h-1.5 bg-gold mr-2" />
+                          <span className="w-2 h-2 rounded-full bg-emerald-500 mr-2" />
                           Verified In-Room Amenities:
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                           {room.features.map((feat, fIdx) => (
                             <div key={fIdx} className="flex items-start text-xs text-gray-700 font-sans">
-                              <Check className="w-3.5 h-3.5 text-gold mr-2 mt-0.5 flex-shrink-0" />
+                              <Check className="w-3.5 h-3.5 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" />
                               <span>{feat}</span>
                             </div>
                           ))}
@@ -171,19 +171,19 @@ export const RoomsPage: React.FC = () => {
                           href={HOTEL_INFO.bookingUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="shimmer-badge flex-1 py-3.5 px-4 bg-gold hover:bg-gold-light text-[#141414] font-bold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition shadow-md"
+                          className="gold-glow-button shimmer-badge flex-1 py-3.5 px-4 text-[#121212] font-bold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition shadow-md cursor-pointer"
                         >
                           <Calendar className="w-3.5 h-3.5 mr-2" />
-                          Book Online
+                          <span>Book Online Direct</span>
                         </a>
                         <a
                           href={getWhatsAppUrl(room.name)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 py-3.5 px-4 border border-emerald-600 bg-white hover:bg-emerald-600 hover:text-white text-emerald-700 font-semibold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition shadow-sm"
+                          className="flex-1 py-3.5 px-4 border-2 border-emerald-600 bg-emerald-50 hover:bg-emerald-600 hover:text-white text-emerald-700 font-bold text-xs uppercase tracking-luxury text-center flex items-center justify-center transition shadow-sm"
                         >
-                          <MessageCircle className="w-3.5 h-3.5 mr-2" />
-                          WhatsApp Enquiry
+                          <MessageCircle className="w-3.5 h-3.5 mr-2 text-emerald-600 hover:text-white" />
+                          <span>WhatsApp Enquiry</span>
                         </a>
                       </div>
 

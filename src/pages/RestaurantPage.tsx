@@ -97,7 +97,7 @@ export const RestaurantPage: React.FC = () => {
               <div className="pt-4 flex flex-wrap gap-4">
                 <Link
                   to="/restaurant-menu"
-                  className="shimmer-badge px-7 py-3.5 bg-gold hover:bg-gold-light text-[#141414] font-bold text-xs uppercase tracking-luxury shadow-lg transition"
+                  className="gold-glow-button shimmer-badge px-7 py-3.5 text-[#121212] font-bold text-xs uppercase tracking-luxury shadow-lg transition cursor-pointer"
                 >
                   Explore Restaurant Menu
                 </Link>

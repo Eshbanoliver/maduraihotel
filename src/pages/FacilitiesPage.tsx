@@ -27,21 +27,50 @@ export const FacilitiesPage: React.FC = () => {
     ? FACILITIES
     : FACILITIES.filter(f => f.category === selectedCategory);
 
-  const getIcon = (name: string) => {
+  const getIcon = (name: string, category: string) => {
+    let gradient = 'from-amber-400 to-yellow-600';
+    if (category === 'comfort') gradient = 'from-cyan-400 to-blue-600';
+    else if (category === 'dining') gradient = 'from-rose-500 to-red-600';
+    else if (category === 'convenience') gradient = 'from-indigo-500 to-purple-600';
+    else if (category === 'service') gradient = 'from-emerald-500 to-teal-700';
+
+    const iconClass = "w-7 h-7 text-white";
+    let iconEl = <Check className={iconClass} />;
+
     switch (name) {
-      case 'Wind': return <Wind className="w-7 h-7 text-gold" />;
-      case 'Wifi': return <Wifi className="w-7 h-7 text-gold" />;
-      case 'Tv': return <Tv className="w-7 h-7 text-gold" />;
-      case 'Bath': return <Bath className="w-7 h-7 text-gold" />;
-      case 'ArrowUpDown': return <ArrowUpDown className="w-7 h-7 text-gold" />;
-      case 'Utensils': return <Utensils className="w-7 h-7 text-gold" />;
-      case 'Wine': return <Wine className="w-7 h-7 text-gold" />;
-      case 'Users': return <Users className="w-7 h-7 text-gold" />;
-      case 'Car': return <Car className="w-7 h-7 text-gold" />;
-      case 'Shirt': return <Shirt className="w-7 h-7 text-gold" />;
-      case 'Bell': return <Bell className="w-7 h-7 text-gold" />;
-      case 'Compass': return <Compass className="w-7 h-7 text-gold" />;
-      default: return <Check className="w-7 h-7 text-gold" />;
+      case 'Wind': iconEl = <Wind className={iconClass} />; break;
+      case 'Wifi': iconEl = <Wifi className={iconClass} />; break;
+      case 'Tv': iconEl = <Tv className={iconClass} />; break;
+      case 'Bath': iconEl = <Bath className={iconClass} />; break;
+      case 'ArrowUpDown': iconEl = <ArrowUpDown className={iconClass} />; break;
+      case 'Utensils': iconEl = <Utensils className={iconClass} />; break;
+      case 'Wine': iconEl = <Wine className={iconClass} />; break;
+      case 'Users': iconEl = <Users className={iconClass} />; break;
+      case 'Car': iconEl = <Car className={iconClass} />; break;
+      case 'Shirt': iconEl = <Shirt className={iconClass} />; break;
+      case 'Bell': iconEl = <Bell className={iconClass} />; break;
+      case 'Compass': iconEl = <Compass className={iconClass} />; break;
+    }
+
+    return (
+      <div className={`p-3.5 bg-gradient-to-br ${gradient} inline-block shadow-lg group-hover:scale-110 transition duration-300`}>
+        {iconEl}
+      </div>
+    );
+  };
+
+  const getCategoryBadge = (category: string) => {
+    switch (category) {
+      case 'comfort':
+        return <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-sky-50 text-sky-800 border border-sky-200">Room Comfort</span>;
+      case 'dining':
+        return <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-rose-50 text-rose-800 border border-rose-200">Dining & Lounge</span>;
+      case 'convenience':
+        return <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-indigo-50 text-indigo-800 border border-indigo-200">Accessibility & Events</span>;
+      case 'service':
+        return <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200">Travel & Service</span>;
+      default:
+        return null;
     }
   };
 
@@ -106,11 +135,12 @@ export const FacilitiesPage: React.FC = () => {
               <div 
                 key={facility.id} 
                 id={facility.id}
-                className="bg-white border border-gold/30 p-6 sm:p-8 shadow-card-subtle hover:border-gold hover:shadow-2xl transition duration-300 flex flex-col justify-between group hover:-translate-y-1"
+                className="bg-white border-2 border-gold/30 p-6 sm:p-8 shadow-card-subtle hover:border-gold hover:shadow-2xl transition duration-300 flex flex-col justify-between group hover:-translate-y-2 card-elevated"
               >
                 <div>
-                  <div className="p-3.5 bg-[#FAF8F5] inline-block border border-gold/40 mb-6 group-hover:bg-gold group-hover:text-dark transition duration-300">
-                    {getIcon(facility.iconName)}
+                  <div className="flex items-center justify-between mb-6">
+                    {getIcon(facility.iconName, facility.category)}
+                    {getCategoryBadge(facility.category)}
                   </div>
                   <h3 className="font-serif text-2xl font-bold text-dark mb-3">
                     {facility.title}
@@ -120,8 +150,8 @@ export const FacilitiesPage: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-gold/20 flex items-center justify-between text-xs text-gold font-bold uppercase tracking-luxury">
-                  <span>Standard Resident Amenity</span>
+                <div className="pt-6 mt-6 border-t border-gold/20 flex items-center justify-between text-xs text-gold-dark font-bold uppercase tracking-luxury">
+                  <span>Verified Hotel Amenity</span>
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 </div>
               </div>

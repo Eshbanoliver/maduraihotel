@@ -49,7 +49,7 @@ export const UndergroundBarPage: React.FC = () => {
               href={getWhatsAppUrl("Underground Bar Timings & Service")}
               target="_blank"
               rel="noopener noreferrer"
-              className="shimmer-badge px-8 py-4 bg-gold hover:bg-gold-light text-[#101010] font-bold text-xs uppercase tracking-luxury shadow-2xl transition hover:scale-105"
+              className="gold-glow-button shimmer-badge px-8 py-4 text-[#101010] font-bold text-xs uppercase tracking-luxury shadow-2xl transition hover:scale-105 cursor-pointer"
             >
               <MessageCircle className="w-4 h-4 inline mr-2 -mt-0.5" />
               Bar Enquiries & Timings
