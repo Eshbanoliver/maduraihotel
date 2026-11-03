@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Calendar, 
@@ -26,7 +26,9 @@ import {
   Compass,
   BedDouble,
   Coffee,
-  MapPinned
+  MapPinned,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { 
   HOTEL_INFO, 
@@ -39,61 +41,175 @@ import {
 import { RoomCard } from '../components/RoomCard';
 import { BookingBar } from '../components/BookingBar';
 
+const HERO_SLIDES = [
+  {
+    id: 'hotel',
+    image: '/images/5b0fdd6a3b9b610530a45fa9.jpg',
+    badge: 'Hotel & Property',
+    alt: 'Hotel Madurai Building & Reception Udaipur',
+    headline: 'Comfort & Elegance in the Heart of',
+    highlight: 'Udaipur',
+    description: 'Hotel Madurai is a 3-star business class and family hotel in Udaipole, Udaipur — pampering you with comfortable AC rooms, pure traditional dining, and 24/7 hospitality.'
+  },
+  {
+    id: 'room',
+    image: '/images/room-super-deluxe-large.jpg',
+    badge: 'Luxury Guest Rooms',
+    alt: 'Hotel Madurai Super Deluxe Room Udaipur',
+    headline: 'High Ceilings & Warm Comfort in',
+    highlight: 'Lake City',
+    description: 'Experience refined couple and family suites featuring high ceilings, warm wood finishings, split air-conditioning, modern en-suite baths, and high-speed WiFi.'
+  },
+  {
+    id: 'restaurant',
+    image: '/images/5bd7063b4c21cd0001298965.jpg',
+    badge: 'Restaurant & Family Thali',
+    alt: 'Hotel Madurai Dining and Family Thali Arrangements',
+    headline: 'Authentic Dining & Thalis in',
+    highlight: 'Udaipole',
+    description: 'Relish rich continental breakfasts, wholesome traditional Indian thalis, and unwind at our underground lounge bar — freshly prepared for families and travelers.'
+  }
+];
+
 export const HomePage: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 5500);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
   return (
     <div className="space-y-0 bg-[#FAF8F5]">
       
-      {/* 1. MAJESTIC HERO SECTION */}
-      <section className="relative min-h-[94vh] flex items-center justify-center bg-[#101010] overflow-hidden">
-        {/* Large Original Hotel Photography with Ken Burns effect */}
+      {/* 1. MAJESTIC HERO SECTION WITH INTERACTIVE SLIDER */}
+      <section 
+        className="relative min-h-[94vh] flex items-center justify-center bg-[#101010] overflow-hidden select-none"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Slider Background Images: 1st Hotel, 2nd Room, 3rd Restaurant */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/room-super-deluxe-large.jpg" 
-            alt="Hotel Madurai Super Deluxe Suite Udaipur" 
-            className="w-full h-full object-cover object-center animate-kenburns"
-          />
-          {/* 10% overlay */}
-          <div className="absolute inset-0 bg-black/10" />
+          {HERO_SLIDES.map((slide, idx) => (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                idx === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+              }`}
+            >
+              <img 
+                src={slide.image} 
+                alt={slide.alt} 
+                className="w-full h-full object-cover object-center scale-105 animate-kenburns"
+              />
+            </div>
+          ))}
+
+          {/* 10% dark overlay across the hero section as requested */}
+          <div className="absolute inset-0 bg-black/10 z-20 pointer-events-none" />
+        </div>
+
+        {/* Previous Slide Arrow */}
+        <button
+          type="button"
+          onClick={prevSlide}
+          aria-label="Previous Slide"
+          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3.5 rounded-full bg-black/50 hover:bg-gold text-white hover:text-black border border-white/20 hover:border-gold backdrop-blur-md transition-all duration-300 shadow-2xl group cursor-pointer"
+        >
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:-translate-x-0.5" />
+        </button>
+
+        {/* Next Slide Arrow */}
+        <button
+          type="button"
+          onClick={nextSlide}
+          aria-label="Next Slide"
+          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3.5 rounded-full bg-black/50 hover:bg-gold text-white hover:text-black border border-white/20 hover:border-gold backdrop-blur-md transition-all duration-300 shadow-2xl group cursor-pointer"
+        >
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:translate-x-0.5" />
+        </button>
+
+        {/* Bottom Slide Indicators with Category Labels */}
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center space-x-2 sm:space-x-3 bg-black/60 backdrop-blur-md py-2 px-3 sm:px-4 rounded-full border border-white/20 shadow-2xl">
+          {HERO_SLIDES.map((slide, idx) => (
+            <button
+              key={slide.id}
+              type="button"
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Switch to slide ${idx + 1}: ${slide.badge}`}
+              className={`flex items-center space-x-2 py-1.5 px-3 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer ${
+                idx === currentSlide
+                  ? 'bg-gradient-to-r from-[#D4AF37] via-[#FFDF73] to-[#B8860B] text-black shadow-lg font-bold scale-105'
+                  : 'text-gray-300 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              <span className={`w-2 h-2 rounded-full ${idx === currentSlide ? 'bg-black animate-pulse' : 'bg-gray-400'}`} />
+              <span className="hidden sm:inline text-[11px] uppercase tracking-wider">{slide.badge}</span>
+              <span className="sm:hidden text-xs">{idx + 1}</span>
+            </button>
+          ))}
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
-          <div className="max-w-3xl">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
+          <div className="max-w-3xl bg-black/40 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/15 shadow-2xl">
             
-            {/* Prestige 5-Star Hospitality Trust Badge */}
-            <div className="inline-flex items-center flex-wrap gap-2.5 bg-[#1C1C1C]/90 backdrop-blur-md border border-gold/60 px-4 py-2 text-xs uppercase tracking-luxury text-gold mb-6 font-serif font-bold shadow-2xl">
-              <div className="flex text-amber-400">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                ))}
+            {/* Active Slide Category Pill & Trust Badge */}
+            <div className="flex flex-wrap items-center gap-2.5 mb-5">
+              <span className="inline-flex items-center space-x-1.5 bg-gold/90 text-black px-3 py-1 text-[11px] font-bold uppercase tracking-wider rounded-full shadow-md">
+                <span className="w-2 h-2 rounded-full bg-black animate-ping" />
+                <span>Slide {currentSlide + 1} of 3: {HERO_SLIDES[currentSlide].badge}</span>
+              </span>
+
+              <div className="inline-flex items-center flex-wrap gap-2 bg-[#1C1C1C]/90 backdrop-blur-md border border-gold/60 px-3.5 py-1 text-xs uppercase tracking-luxury text-gold font-serif font-bold shadow-xl rounded-full">
+                <div className="flex text-amber-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <span className="text-gray-400 hidden sm:inline">|</span>
+                <span className="text-white font-sans font-semibold tracking-normal text-[11px] sm:text-xs">
+                  4.6/5 Rated
+                </span>
+                <span className="text-gray-400 hidden sm:inline">|</span>
+                <span className="text-gold-bright font-semibold">
+                  3-Star Hotel
+                </span>
               </div>
-              <span className="text-gray-400 hidden sm:inline">|</span>
-              <span className="text-white font-sans font-semibold tracking-normal text-[11px] sm:text-xs">
-                4.6/5 Rated by 500+ Guests
-              </span>
-              <span className="text-gray-400 hidden sm:inline">|</span>
-              <span className="text-gold-bright font-semibold">
-                3-Star Business Class Hotel
-              </span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-white leading-[1.12] mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
-              Comfort & Elegance in the Heart of <span className="gold-gradient-text drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Udaipur</span>.
+            {/* Dynamic Headline synced with Slide */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white leading-[1.14] mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+              {HERO_SLIDES[currentSlide].headline}{' '}
+              <span className="gold-gradient-text drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                {HERO_SLIDES[currentSlide].highlight}
+              </span>.
             </h1>
 
-            {/* Authentic Subtitle */}
-            <p className="text-sm sm:text-lg text-white font-medium leading-relaxed mb-8 max-w-2xl font-sans drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
-              Hotel Madurai is a business class hotel in Udaipur that pampers you with all the amenities a 21st-century traveler expects — fine AC rooms, authentic family thalis, an underground lounge bar, and 24/7 reception in Udaipole.
+            {/* Dynamic Description synced with Slide */}
+            <p className="text-sm sm:text-base text-gray-100 font-medium leading-relaxed mb-7 max-w-2xl font-sans drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
+              {HERO_SLIDES[currentSlide].description}
             </p>
 
             {/* Hero Action CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
               <a
                 href={HOTEL_INFO.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="gold-glow-button shimmer-badge py-4 px-8 text-[#121212] font-bold text-xs uppercase tracking-luxury shadow-2xl transition-all duration-300 hover:scale-[1.03] flex items-center justify-center text-center cursor-pointer"
+                className="gold-glow-button shimmer-badge py-3.5 px-7 text-[#121212] font-bold text-xs uppercase tracking-luxury shadow-2xl transition-all duration-300 hover:scale-[1.03] flex items-center justify-center text-center cursor-pointer rounded-sm"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 <span>Book Direct & Save</span>
@@ -103,7 +219,7 @@ export const HomePage: React.FC = () => {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="emerald-glow-button py-4 px-7 text-white font-bold text-xs uppercase tracking-luxury backdrop-blur-md transition-all duration-300 flex items-center justify-center text-center shadow-lg group hover:scale-[1.03] cursor-pointer"
+                className="emerald-glow-button py-3.5 px-6 text-white font-bold text-xs uppercase tracking-luxury backdrop-blur-md transition-all duration-300 flex items-center justify-center text-center shadow-lg group hover:scale-[1.03] cursor-pointer rounded-sm"
               >
                 <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse mr-2.5" />
                 <MessageCircle className="w-4 h-4 mr-2 text-white" />
@@ -111,17 +227,17 @@ export const HomePage: React.FC = () => {
               </a>
 
               <Link
-                to="/rooms"
-                className="py-4 px-6 border-2 border-white/30 text-white hover:border-gold hover:text-gold-bright text-xs uppercase tracking-luxury transition font-semibold backdrop-blur-sm flex items-center justify-center text-center hover:bg-white/10"
+                to={currentSlide === 2 ? "/dining" : "/rooms"}
+                className="py-3.5 px-5 border-2 border-white/40 text-white hover:border-gold hover:text-gold-bright text-xs uppercase tracking-luxury transition font-semibold backdrop-blur-sm flex items-center justify-center text-center hover:bg-white/10 rounded-sm"
               >
-                <span>View Suites</span>
+                <span>{currentSlide === 2 ? "View Dining" : "View Suites"}</span>
               </Link>
             </div>
 
             {/* Quick Transport Distance & Trust Badges */}
-            <div className="mt-12 pt-6 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-sans">
+            <div className="mt-8 pt-5 border-t border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-sans">
               <div className="flex items-center space-x-2 text-gray-200">
-                <span className="p-1.5 bg-emerald-500/20 text-emerald-400 rounded-none border border-emerald-500/40">
+                <span className="p-1.5 bg-emerald-500/20 text-emerald-400 rounded border border-emerald-500/40">
                   <MapPin className="w-3.5 h-3.5" />
                 </span>
                 <div>
@@ -131,7 +247,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               <div className="flex items-center space-x-2 text-gray-200">
-                <span className="p-1.5 bg-cyan-500/20 text-cyan-400 rounded-none border border-cyan-500/40">
+                <span className="p-1.5 bg-cyan-500/20 text-cyan-400 rounded border border-cyan-500/40">
                   <Car className="w-3.5 h-3.5" />
                 </span>
                 <div>
@@ -141,7 +257,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               <div className="flex items-center space-x-2 text-gray-200">
-                <span className="p-1.5 bg-amber-500/20 text-amber-400 rounded-none border border-amber-500/40">
+                <span className="p-1.5 bg-amber-500/20 text-amber-400 rounded border border-amber-500/40">
                   <Compass className="w-3.5 h-3.5" />
                 </span>
                 <div>
@@ -151,7 +267,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               <div className="flex items-center space-x-2 text-gray-200">
-                <span className="p-1.5 bg-rose-500/20 text-rose-400 rounded-none border border-rose-500/40">
+                <span className="p-1.5 bg-rose-500/20 text-rose-400 rounded border border-rose-500/40">
                   <ShieldCheck className="w-3.5 h-3.5" />
                 </span>
                 <div>
@@ -160,7 +276,6 @@ export const HomePage: React.FC = () => {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
