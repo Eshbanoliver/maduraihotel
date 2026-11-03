@@ -43,18 +43,18 @@ import { BookingBar } from '../components/BookingBar';
 
 const HERO_SLIDES = [
   {
-    id: 'hotel',
-    image: '/images/5b0fdd6a3b9b610530a45fa9.jpg',
-    badge: 'Hotel & Property',
-    alt: 'Hotel Madurai Building & Reception Udaipur',
+    id: 'deluxe-room',
+    image: '/images/room-deluxe-large.jpg',
+    badge: 'Deluxe Room',
+    alt: 'Hotel Madurai Deluxe Room Udaipur',
     headline: 'Comfort & Elegance in the Heart of',
     highlight: 'Udaipur',
-    description: 'Hotel Madurai is a 3-star business class and family hotel in Udaipole, Udaipur — pampering you with comfortable AC rooms, pure traditional dining, and 24/7 hospitality.'
+    description: 'Designed for practicality and comfort, our deluxe guest rooms feature scenic Udaipur city views, plush king-sized bedding, split AC, and round-the-clock room service.'
   },
   {
-    id: 'room',
+    id: 'super-deluxe-room',
     image: '/images/room-super-deluxe-large.jpg',
-    badge: 'Luxury Guest Rooms',
+    badge: 'Super Deluxe Suite',
     alt: 'Hotel Madurai Super Deluxe Room Udaipur',
     headline: 'High Ceilings & Warm Comfort in',
     highlight: 'Lake City',
