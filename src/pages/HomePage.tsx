@@ -50,15 +50,10 @@ export const HomePage: React.FC = () => {
           <img 
             src="/images/room-super-deluxe-large.jpg" 
             alt="Hotel Madurai Super Deluxe Suite Udaipur" 
-            className="w-full h-full object-cover object-center animate-kenburns opacity-75"
+            className="w-full h-full object-cover object-center animate-kenburns"
           />
-          {/* Multi-layered luxury gradients for deep depth & vibrant color */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#101010]/95 via-[#101010]/80 to-[#101010]/45" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#101010] via-transparent to-black/60" />
-          
-          {/* Ambient colorful atmospheric glows */}
-          <div className="hero-glow-gold top-10 left-10" />
-          <div className="hero-glow-emerald bottom-10 right-10" />
+          {/* 10% overlay */}
+          <div className="absolute inset-0 bg-black/10" />
         </div>
 
         {/* Hero Content */}
@@ -83,12 +78,12 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-white leading-[1.12] mb-6 drop-shadow-lg">
-              Comfort & Elegance in the Heart of <span className="gold-gradient-text">Udaipur</span>.
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-white leading-[1.12] mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+              Comfort & Elegance in the Heart of <span className="gold-gradient-text drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Udaipur</span>.
             </h1>
 
             {/* Authentic Subtitle */}
-            <p className="text-sm sm:text-lg text-gray-200 font-normal leading-relaxed mb-8 max-w-2xl font-sans">
+            <p className="text-sm sm:text-lg text-white font-medium leading-relaxed mb-8 max-w-2xl font-sans drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
               Hotel Madurai is a business class hotel in Udaipur that pampers you with all the amenities a 21st-century traveler expects — fine AC rooms, authentic family thalis, an underground lounge bar, and 24/7 reception in Udaipole.
             </p>
 
