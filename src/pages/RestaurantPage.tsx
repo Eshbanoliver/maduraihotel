@@ -21,7 +21,7 @@ export const RestaurantPage: React.FC = () => {
       <section className="bg-[#141414] text-white py-24 relative overflow-hidden border-b border-gold/30">
         <div className="absolute inset-0 opacity-25">
           <img 
-            src="/images/5bd7063b4c21cd0001298965.jpg" 
+            src="/images/restaurant-dining-hall.jpg" 
             alt="Hotel Madurai Restaurant" 
             className="w-full h-full object-cover animate-kenburns"
           />
@@ -115,22 +115,22 @@ export const RestaurantPage: React.FC = () => {
               <div className="space-y-4">
                 <div className="border border-gold/30 p-2 bg-white shadow-xl">
                   <img
-                    src="/images/5bd7063b4c21cd0001298965.jpg"
-                    alt="Family Thali Dining Hotel Madurai"
+                    src="/images/restaurant-dining-hall.jpg"
+                    alt="Multi-Cuisine Restaurant Dining Hall"
                     className="w-full aspect-square object-cover"
                   />
                   <span className="text-xs text-gray-700 text-center block mt-2 font-semibold">
-                    Family Thali Arrangements
+                    In-House Restaurant Hall
                   </span>
                 </div>
                 <div className="border border-gold/30 p-2 bg-white shadow-xl">
                   <img
-                    src="/images/room-super-deluxe-large.jpg"
-                    alt="In-room dining service"
+                    src="/images/hotel-lobby-staff.jpg"
+                    alt="Lobby & Restaurant Entry"
                     className="w-full aspect-[4/3] object-cover"
                   />
                   <span className="text-xs text-gray-700 text-center block mt-2 font-semibold">
-                    Prompt In-Room Dining Service
+                    Lobby & Dining Entrance
                   </span>
                 </div>
               </div>
@@ -138,12 +138,12 @@ export const RestaurantPage: React.FC = () => {
               <div className="space-y-4 pt-8">
                 <div className="border border-gold/30 p-2 bg-white shadow-xl">
                   <img
-                    src="/images/5bd7054ac52ae30001ddb980.jpg"
-                    alt="Party Hall Dining Setup"
+                    src="/images/5bd7063b4c21cd0001298965.jpg"
+                    alt="Family Thali Arrangements"
                     className="w-full aspect-[4/3] object-cover"
                   />
                   <span className="text-xs text-gray-700 text-center block mt-2 font-semibold">
-                    Party & Banquet Setup
+                    Famous Family Thali
                   </span>
                 </div>
                 <div className="bg-[#181818] text-white p-7 border border-gold/40 shadow-2xl">

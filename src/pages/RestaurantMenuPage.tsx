@@ -20,7 +20,7 @@ export const RestaurantMenuPage: React.FC = () => {
       <section className="bg-[#141414] text-white py-24 relative overflow-hidden border-b border-gold/30">
         <div className="absolute inset-0 opacity-25">
           <img 
-            src="/images/5bd7063b4c21cd0001298965.jpg" 
+            src="/images/restaurant-dining-hall.jpg" 
             alt="Hotel Madurai Dining" 
             className="w-full h-full object-cover animate-kenburns"
           />

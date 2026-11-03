@@ -80,7 +80,7 @@ export const FacilitiesPage: React.FC = () => {
       <section className="bg-[#141414] text-white py-24 relative overflow-hidden border-b border-gold/30">
         <div className="absolute inset-0 opacity-25">
           <img 
-            src="/images/room-deluxe-large.jpg" 
+            src="/images/hotel-reception-lobby.jpg" 
             alt="Hotel Madurai Facilities" 
             className="w-full h-full object-cover animate-kenburns"
           />
@@ -174,59 +174,113 @@ export const FacilitiesPage: React.FC = () => {
             <div className="w-16 h-[1px] bg-gold mx-auto my-4" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Card 1: Lift & Accessibility */}
-            <div className="border border-gold/30 p-8 bg-[#FAF8F5] shadow-luxury flex flex-col justify-between">
-              <div>
-                <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-2">
-                  Accessibility
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-dark mb-3">
-                  Modern Lift / Elevator
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed mb-6 font-sans">
-                  Hotel Madurai offers a dedicated passenger lift serving all floors, making room access comfortable for elders, families, and travelers with heavy luggage.
-                </p>
+            <div className="border border-gold/30 bg-[#FAF8F5] shadow-luxury flex flex-col justify-between overflow-hidden group hover:border-gold transition-all duration-300">
+              <div className="aspect-[16/10] overflow-hidden bg-dark">
+                <img 
+                  src="/images/hotel-elevator-lift.jpg" 
+                  alt="Passenger Elevator Lift Hotel Madurai" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
               </div>
-              <div className="p-4 bg-white border-l-2 border-gold text-xs text-gray-700 italic font-serif">
-                Guest review: "had lift facility, luxurious rooms, restaurant is also available there..."
-              </div>
-            </div>
-
-            {/* Card 2: Railway & Airport Transfers */}
-            <div className="border border-gold/30 p-8 bg-[#FAF8F5] shadow-luxury flex flex-col justify-between">
-              <div>
-                <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-2">
-                  Connectivity
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-dark mb-3">
-                  Station & Airport Transfers
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed mb-6 font-sans">
-                  We are just minutes from Udaipur City Railway Station and Udaipole Bus Stand. Our travel desk coordinates airport and station transfers to ensure smooth arrivals and departures.
-                </p>
-              </div>
-              <div className="p-4 bg-white border-l-2 border-gold text-xs text-gray-700 italic font-serif">
-                Guest review: "Location of hotel is approvable and it's near both bus stand and railway station"
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-1">
+                    Accessibility
+                  </span>
+                  <h3 className="font-serif text-xl font-bold text-dark mb-2">
+                    Modern Lift / Elevator
+                  </h3>
+                  <p className="text-xs text-gray-600 leading-relaxed mb-4 font-sans">
+                    Dedicated passenger elevator serving all guestroom floors, ensuring seamless accessibility for elders, families, and travelers with luggage.
+                  </p>
+                </div>
+                <div className="p-3 bg-white border-l-2 border-gold text-[11px] text-gray-700 italic font-serif">
+                  "Had lift facility, luxurious rooms, restaurant is also available..."
+                </div>
               </div>
             </div>
 
-            {/* Card 3: Party Hall & Events */}
-            <div className="border border-gold/30 p-8 bg-[#FAF8F5] shadow-luxury flex flex-col justify-between">
-              <div>
-                <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-2">
-                  Celebrations
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-dark mb-3">
-                  Party Hall Near Bus Stand
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed mb-6 font-sans">
-                  Our on-site party and banquet hall provides a practical venue for family functions, birthday gatherings, tour group meals, and celebrations right in central Udaipur.
-                </p>
+            {/* Card 2: 24/7 Front Desk & Transfers */}
+            <div className="border border-gold/30 bg-[#FAF8F5] shadow-luxury flex flex-col justify-between overflow-hidden group hover:border-gold transition-all duration-300">
+              <div className="aspect-[16/10] overflow-hidden bg-dark">
+                <img 
+                  src="/images/hotel-front-desk.jpg" 
+                  alt="24/7 Reception Desk Hotel Madurai" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
               </div>
-              <div className="p-4 bg-white border-l-2 border-gold text-xs text-gray-700 italic font-serif">
-                Original update: "Party Hall Near Udaipur Bus Stand Restaurant Mad..."
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-1">
+                    24/7 Hospitality
+                  </span>
+                  <h3 className="font-serif text-xl font-bold text-dark mb-2">
+                    Front Desk & Transfers
+                  </h3>
+                  <p className="text-xs text-gray-600 leading-relaxed mb-4 font-sans">
+                    Minutes from Udaipur City Railway Station and Udaipole Bus Stand. Our 24-hour reception desk coordinates station and airport transfers.
+                  </p>
+                </div>
+                <div className="p-3 bg-white border-l-2 border-gold text-[11px] text-gray-700 italic font-serif">
+                  "Location is approvable and it's near both bus stand and railway station"
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3: In-House Dining Hall */}
+            <div className="border border-gold/30 bg-[#FAF8F5] shadow-luxury flex flex-col justify-between overflow-hidden group hover:border-gold transition-all duration-300">
+              <div className="aspect-[16/10] overflow-hidden bg-dark">
+                <img 
+                  src="/images/restaurant-dining-hall.jpg" 
+                  alt="Multi-Cuisine Restaurant Hotel Madurai" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
+              </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-1">
+                    Dining & Thalis
+                  </span>
+                  <h3 className="font-serif text-xl font-bold text-dark mb-2">
+                    Multi-Cuisine Restaurant
+                  </h3>
+                  <p className="text-xs text-gray-600 leading-relaxed mb-4 font-sans">
+                    Cozy breakfast room serving continental breakfasts, authentic Rajasthani family thalis, and banquet catering for groups.
+                  </p>
+                </div>
+                <div className="p-3 bg-white border-l-2 border-gold text-[11px] text-gray-700 italic font-serif">
+                  "Food was tasty and within budget. Loved staying in this hotel..."
+                </div>
+              </div>
+            </div>
+
+            {/* Card 4: Soaking Bathtub & En-Suite Bath */}
+            <div className="border border-gold/30 bg-[#FAF8F5] shadow-luxury flex flex-col justify-between overflow-hidden group hover:border-gold transition-all duration-300">
+              <div className="aspect-[16/10] overflow-hidden bg-dark">
+                <img 
+                  src="/images/bathroom-bathtub.jpg" 
+                  alt="Marble Bathtub Hotel Madurai" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
+              </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-1">
+                    Room Luxury
+                  </span>
+                  <h3 className="font-serif text-xl font-bold text-dark mb-2">
+                    Marble Soaking Bathtub
+                  </h3>
+                  <p className="text-xs text-gray-600 leading-relaxed mb-4 font-sans">
+                    Deep marble soaking bathtubs with telephone showers, 24/7 hot/cold running water, and fresh essential toiletries.
+                  </p>
+                </div>
+                <div className="p-3 bg-white border-l-2 border-gold text-[11px] text-gray-700 italic font-serif">
+                  "Spacious bathrooms with separate shower and luxurious amenities..."
+                </div>
               </div>
             </div>
 

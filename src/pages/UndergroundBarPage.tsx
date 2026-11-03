@@ -21,7 +21,7 @@ export const UndergroundBarPage: React.FC = () => {
       <section className="relative py-32 flex items-center justify-center border-b border-gold/30 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-25">
           <img 
-            src="/images/room-super-deluxe-large.jpg" 
+            src="/images/restaurant-dining-hall.jpg" 
             alt="Underground Bar Ambiance" 
             className="w-full h-full object-cover filter brightness-50 contrast-125 animate-kenburns"
           />

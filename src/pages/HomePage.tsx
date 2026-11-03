@@ -44,7 +44,7 @@ import { BookingBar } from '../components/BookingBar';
 const HERO_SLIDES = [
   {
     id: 'deluxe-room',
-    image: '/images/room-deluxe-large.jpg',
+    image: '/images/room-deluxe-main.jpg',
     badge: 'Deluxe Room',
     alt: 'Hotel Madurai Deluxe Room Udaipur',
     headline: 'Comfort & Elegance in the Heart of',
@@ -53,21 +53,30 @@ const HERO_SLIDES = [
   },
   {
     id: 'super-deluxe-room',
-    image: '/images/room-super-deluxe-large.jpg',
+    image: '/images/room-super-deluxe-main.jpg',
     badge: 'Super Deluxe Suite',
     alt: 'Hotel Madurai Super Deluxe Room Udaipur',
     headline: 'High Ceilings & Warm Comfort in',
     highlight: 'Lake City',
-    description: 'Experience refined couple and family suites featuring high ceilings, warm wood finishings, split air-conditioning, modern en-suite baths, and high-speed WiFi.'
+    description: 'Experience refined couple and family suites featuring handcrafted diamond-tufted headboards, swan towel art, split air-conditioning, and modern en-suite baths with soaking tub.'
   },
   {
     id: 'restaurant',
-    image: '/images/5bd7063b4c21cd0001298965.jpg',
-    badge: 'Restaurant & Family Thali',
-    alt: 'Hotel Madurai Dining and Family Thali Arrangements',
+    image: '/images/restaurant-dining-hall.jpg',
+    badge: 'Restaurant & Dining',
+    alt: 'Hotel Madurai In-House Multi-Cuisine Restaurant',
     headline: 'Authentic Dining & Thalis in',
     highlight: 'Udaipole',
     description: 'Relish rich continental breakfasts, wholesome traditional Indian thalis, and unwind at our underground lounge bar — freshly prepared for families and travelers.'
+  },
+  {
+    id: 'hotel-facade',
+    image: '/images/hotel-exterior-facade.jpg',
+    badge: 'Hotel Property & Facade',
+    alt: 'Hotel Madurai Grand Facade & Architecture Udaipur',
+    headline: '3-Star Hospitality Near Udaipur',
+    highlight: 'Station & Udaipole',
+    description: 'Strategically located in Shrinath Market, Udaipole — offering effortless access to Udaipur Railway Station, Central Bus Stand, passenger lift, and 24/7 reception.'
   }
 ];
 
@@ -227,10 +236,10 @@ export const HomePage: React.FC = () => {
               </a>
 
               <Link
-                to={currentSlide === 2 ? "/dining" : "/rooms"}
+                to={currentSlide === 2 ? "/restaurant" : currentSlide === 3 ? "/about" : "/rooms"}
                 className="py-3.5 px-5 border-2 border-white/40 text-white hover:border-gold hover:text-gold-bright text-xs uppercase tracking-luxury transition font-semibold backdrop-blur-sm flex items-center justify-center text-center hover:bg-white/10 rounded-sm"
               >
-                <span>{currentSlide === 2 ? "View Dining" : "View Suites"}</span>
+                <span>{currentSlide === 2 ? "View Dining" : currentSlide === 3 ? "About Hotel" : "View Suites"}</span>
               </Link>
             </div>
 
@@ -356,8 +365,8 @@ export const HomePage: React.FC = () => {
               <div className="relative border-4 border-gold/40 p-2 sm:p-3 bg-white shadow-2xl">
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
-                    src="/images/room-triple-bed-large.jpg"
-                    alt="Hotel Madurai Triple Bed Suite Udaipur"
+                    src="/images/hotel-exterior-facade.jpg"
+                    alt="Hotel Madurai Grand Facade & Building Udaipur"
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   />
                 </div>
@@ -695,22 +704,22 @@ export const HomePage: React.FC = () => {
               <div className="space-y-4">
                 <div className="border-2 border-gold/40 p-2 bg-white shadow-xl card-elevated">
                   <img
-                    src="/images/5bd7063b4c21cd0001298965.jpg"
-                    alt="Family Thali Dining Hotel Madurai"
+                    src="/images/restaurant-dining-hall.jpg"
+                    alt="Multi-Cuisine Restaurant Dining Hall Hotel Madurai"
                     className="w-full aspect-square object-cover"
                   />
                   <span className="text-xs text-gray-800 text-center block mt-2 font-bold">
-                    Family Thali Arrangements
+                    Multi-Cuisine Restaurant
                   </span>
                 </div>
                 <div className="border-2 border-gold/40 p-2 bg-white shadow-xl card-elevated">
                   <img
-                    src="/images/5bd7054ac52ae30001ddb980.jpg"
-                    alt="Party Hall at Hotel Madurai Udaipur"
+                    src="/images/5bd7063b4c21cd0001298965.jpg"
+                    alt="Family Thali Dining Hotel Madurai"
                     className="w-full aspect-[4/3] object-cover"
                   />
                   <span className="text-xs text-gray-800 text-center block mt-2 font-bold">
-                    Party Hall near Bus Stand
+                    Famous Family Thali Arrangements
                   </span>
                 </div>
               </div>
@@ -718,12 +727,12 @@ export const HomePage: React.FC = () => {
               <div className="space-y-4 pt-6">
                 <div className="border-2 border-gold/40 p-2 bg-white shadow-xl card-elevated">
                   <img
-                    src="/images/room-deluxe-large.jpg"
-                    alt="Hotel Madurai Dining Hospitality"
+                    src="/images/hotel-lobby-staff.jpg"
+                    alt="Hotel Madurai Lobby & Restaurant Entry"
                     className="w-full aspect-[4/3] object-cover"
                   />
                   <span className="text-xs text-gray-800 text-center block mt-2 font-bold">
-                    Prompt In-Room Dining
+                    Lobby & Dining Overlook
                   </span>
                 </div>
                 <div className="p-6 bg-gradient-to-br from-[#1C1C1C] to-[#121212] text-white border-2 border-gold/50 shadow-xl">
@@ -916,7 +925,7 @@ export const HomePage: React.FC = () => {
       <section className="py-24 bg-gradient-to-b from-[#141414] to-[#0A0A0A] text-white border-t-2 border-gold/40 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src="/images/room-triple-bed-large.jpg" 
+            src="/images/hotel-exterior-facade.jpg" 
             alt="Hotel Madurai Direct Reservation" 
             className="w-full h-full object-cover filter blur-sm"
           />

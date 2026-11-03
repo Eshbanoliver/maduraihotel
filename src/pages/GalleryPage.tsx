@@ -15,7 +15,7 @@ export const GalleryPage: React.FC = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const categories = ['All', 'Rooms', 'Property', 'Events', 'Dining', 'Sightseeing'];
+  const categories = ['All', 'Rooms', 'Property', 'Amenities', 'Dining', 'Events', 'Sightseeing'];
 
   const filteredItems = selectedCategory === 'All'
     ? GALLERY_ITEMS
@@ -32,7 +32,7 @@ export const GalleryPage: React.FC = () => {
       <section className="bg-[#141414] text-white py-24 relative overflow-hidden border-b border-gold/30">
         <div className="absolute inset-0 opacity-25">
           <img 
-            src="/images/room-super-deluxe-large.jpg" 
+            src="/images/hotel-exterior-facade.jpg" 
             alt="Hotel Madurai Gallery" 
             className="w-full h-full object-cover animate-kenburns"
           />

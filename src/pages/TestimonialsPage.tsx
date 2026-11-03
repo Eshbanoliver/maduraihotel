@@ -9,7 +9,7 @@ export const TestimonialsPage: React.FC = () => {
       <section className="bg-[#141414] text-white py-24 relative overflow-hidden border-b border-gold/30">
         <div className="absolute inset-0 opacity-25">
           <img 
-            src="/images/room-triple-bed-large.jpg" 
+            src="/images/hotel-reception-lobby.jpg" 
             alt="Hotel Madurai Guest Reviews" 
             className="w-full h-full object-cover animate-kenburns"
           />

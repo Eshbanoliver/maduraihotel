@@ -58,18 +58,20 @@ export const ROOMS: Room[] = [
   {
     id: "super-deluxe-room",
     name: "Super Deluxe Room",
-    tagline: "High Ceilings & Warm Wood Finishings",
-    description: "High ceilings and wood finishings define the bedrooms at the Super Deluxe Room. Accommodating a couple with a spacious bathroom with a separate shower and comfortable beds. Each room is stocked with amenities like LED TV, sofa, tea maker, room service, travel desk and complimentary WiFi.",
-    image: "/images/room-super-deluxe-large.jpg",
+    tagline: "Diamond-Tufted Headboards & Warm Wood Finishings",
+    description: "High ceilings and rich dark wood finishings define the bedrooms at the Super Deluxe Room. Accommodating a couple with a spacious bathroom with deep soaking bathtub, separate shower and comfortable beds. Each room is stocked with amenities like LED TV, sofa, tea maker, room service, travel desk and complimentary WiFi.",
+    image: "/images/room-super-deluxe-main.jpg",
     galleryImages: [
-      "/images/room-super-deluxe-large.jpg",
-      "/images/5b45e413f3579911b41f4377.jpg",
-      "/images/5c0e86df8e79da0001423c0b.jpg"
+      "/images/room-super-deluxe-main.jpg",
+      "/images/room-super-deluxe-bed.jpg",
+      "/images/bathroom-bathtub.jpg",
+      "/images/bathroom-sink-toilet.jpg",
+      "/images/room-super-deluxe-large.jpg"
     ],
     features: [
-      "High ceilings & fine wood finishings",
-      "Spacious bathroom with separate shower",
-      "Plush comfortable king bed",
+      "High ceilings & diamond-tufted leather headboard",
+      "Spacious bathroom with soaking bathtub & shower",
+      "Plush comfortable king bed with swan towel art",
       "LED TV with Cable/Satellite channels",
       "Cozy sofa seating",
       "In-room tea & coffee maker",
@@ -83,16 +85,18 @@ export const ROOMS: Room[] = [
     id: "triple-bed-room",
     name: "Triple Bed Room",
     tagline: "Spacious Comfort for Groups & Families",
-    description: "Triple Bed Room guests can enjoy a spacious guestroom decorated in warm tones and featuring services, amenities for business and leisure travelers. Deluxe rooms feature either a king-size bed, complimentary WiFi, 24 hours laundry service, airport and railway Station transfers, LED TV and split AC are offered with every booking.",
-    image: "/images/room-triple-bed-large.jpg",
+    description: "Triple Bed Room guests can enjoy a spacious guestroom decorated in warm tones with Rajasthani tile accents, featuring double and single bed setup for business and leisure travelers. Complimentary WiFi, 24 hours laundry service, airport and railway Station transfers, LED TV and split AC are offered with every booking.",
+    image: "/images/room-triple-bed-main.jpg",
     galleryImages: [
-      "/images/room-triple-bed-large.jpg",
-      "/images/5b45e3e6f3579911b41f4344.jpg",
-      "/images/5c0e84c3a6976f00019faa7c.jpg"
+      "/images/room-triple-bed-main.jpg",
+      "/images/room-triple-bed-view2.jpg",
+      "/images/bathroom-sink-toilet.jpg",
+      "/images/bathroom-ensuite.jpg",
+      "/images/room-triple-bed-large.jpg"
     ],
     features: [
-      "Triple bedding / King-size bed configuration",
-      "Decorated in warm inviting tones",
+      "Triple bedding setup (King bed + Single bed)",
+      "Traditional Rajasthani tile wainscoting decor",
       "Efficient split air conditioning",
       "LED TV entertainment",
       "Complimentary high-speed WiFi",
@@ -107,21 +111,24 @@ export const ROOMS: Room[] = [
     id: "deluxe-room",
     name: "Deluxe Room",
     tagline: "Practical Elegance with Scenic City Views",
-    description: "Designed for practicality and comfort, these deluxe rooms feature stunning views of Udaipur. Guests will benefit from a king-sized bed, wifi, laundry service, high-speed internet and bathroom with essential toiletries.",
-    image: "/images/room-deluxe-large.jpg",
+    description: "Designed for practicality and comfort, these deluxe rooms feature stunning views of Udaipur. Guests benefit from a king-sized bed, carpet rug, seating area, wifi, laundry service, high-speed internet and private en-suite bathroom with essential toiletries.",
+    image: "/images/room-deluxe-main.jpg",
     galleryImages: [
-      "/images/room-deluxe-large.jpg",
-      "/images/5b2df35cfca24608a4048b79.jpg",
-      "/images/60c75105203f050001fee357.jpg"
+      "/images/room-deluxe-main.jpg",
+      "/images/room-deluxe-angle.jpg",
+      "/images/room-deluxe-tv.jpg",
+      "/images/bathroom-ensuite.jpg",
+      "/images/room-deluxe-large.jpg"
     ],
     features: [
       "Stunning panoramic views of Udaipur",
       "King-sized bed with crisp linens",
+      "Armchairs & coffee table seating",
+      "Wall-mounted LED TV & split AC",
       "High-speed wireless internet",
       "Private bathroom with essential toiletries",
       "Continuous hot & cold shower",
       "Full laundry service",
-      "Cable / Satellite LED TV",
       "Prompt room service"
     ],
     idealFor: "Solo Travelers & Couples"
@@ -267,67 +274,144 @@ export const NEARBY_PLACES: NearbyPlace[] = [
 
 export const GALLERY_ITEMS = [
   {
-    id: "gal-1",
-    title: "Super Deluxe Room Interior",
-    category: "Rooms",
-    image: "/images/room-super-deluxe-large.jpg",
-    caption: "High ceilings, handcrafted wood finishings, and elegant couple accommodation."
+    id: "gal-facade",
+    title: "Hotel Madurai Grand Facade & Architecture",
+    category: "Property",
+    image: "/images/hotel-exterior-facade.jpg",
+    caption: "Multi-story hotel building with distinctive tree artwork and official Hotel & Restaurant signage in Udaipole, Udaipur."
   },
   {
-    id: "gal-2",
+    id: "gal-lobby",
+    title: "Grand Reception & Guest Lounge",
+    category: "Property",
+    image: "/images/hotel-reception-lobby.jpg",
+    caption: "Spacious marble lobby featuring illuminated carved front desk, elevator access, and seating lounge."
+  },
+  {
+    id: "gal-frontdesk",
+    title: "24/7 Front Desk Counter",
+    category: "Property",
+    image: "/images/hotel-front-desk.jpg",
+    caption: "Round-the-clock reception desk with illuminated floral woodwork and royal Mewar insignia."
+  },
+  {
+    id: "gal-lobby-staff",
+    title: "Welcome Lobby & Exotic Aquarium",
+    category: "Property",
+    image: "/images/hotel-lobby-staff.jpg",
+    caption: "Courteous hotel reception staff, glass restaurant overlook, and glowing fish aquarium."
+  },
+  {
+    id: "gal-elevator",
+    title: "Passenger Elevator & Lift Lobby",
+    category: "Amenities",
+    image: "/images/hotel-elevator-lift.jpg",
+    caption: "Modern passenger lift serving all guestroom floors with effortless accessibility for elders and luggage."
+  },
+  {
+    id: "gal-dining-hall",
+    title: "In-House Multi-Cuisine Restaurant",
+    category: "Dining",
+    image: "/images/restaurant-dining-hall.jpg",
+    caption: "Warm ambient restaurant dining hall with wood-paneled pillars, circular chandeliers, and comfortable seating."
+  },
+  {
+    id: "gal-super-deluxe-1",
+    title: "Super Deluxe Suite Master Bedroom",
+    category: "Rooms",
+    image: "/images/room-super-deluxe-main.jpg",
+    caption: "Luxury suite featuring handcrafted diamond-tufted headboard, swan towel art, and split AC."
+  },
+  {
+    id: "gal-super-deluxe-2",
+    title: "Super Deluxe Honeymoon Bedding",
+    category: "Rooms",
+    image: "/images/room-super-deluxe-bed.jpg",
+    caption: "Romantic towel origami, plush floral pillows, and crisp white linens."
+  },
+  {
+    id: "gal-triple-1",
     title: "Triple Bed Family Room",
     category: "Rooms",
-    image: "/images/room-triple-bed-large.jpg",
-    caption: "Spacious triple bedding setup with split AC and warm ambient decor."
+    image: "/images/room-triple-bed-main.jpg",
+    caption: "Spacious family suite configured with a king bed and additional single bed."
   },
   {
-    id: "gal-3",
-    title: "Deluxe Room",
+    id: "gal-triple-2",
+    title: "Triple Bed Room Rajasthani Detail",
     category: "Rooms",
-    image: "/images/room-deluxe-large.jpg",
-    caption: "Practical elegance with king bed, work vanity, and Udaipur city outlook."
+    image: "/images/room-triple-bed-view2.jpg",
+    caption: "Warm aesthetic with traditional Rajasthani tile wainscoting, split AC, and coffee seating."
   },
   {
-    id: "gal-4",
-    title: "Hotel Madurai Property & Reception",
-    category: "Property",
-    image: "/images/5b0fdd6a3b9b610530a45fa9.jpg",
-    caption: "Warm, family-run hospitality welcoming business and leisure guests."
+    id: "gal-deluxe-1",
+    title: "Deluxe Room Panoramic Comfort",
+    category: "Rooms",
+    image: "/images/room-deluxe-main.jpg",
+    caption: "Bright guestroom with plush king-sized bed, carpet rug, coffee table, and modern split AC."
   },
   {
-    id: "gal-5",
+    id: "gal-deluxe-2",
+    title: "Deluxe Room Seating & Bedding",
+    category: "Rooms",
+    image: "/images/room-deluxe-angle.jpg",
+    caption: "Inviting seating arrangement with complimentary bottled water, wood finishes, and bedside controls."
+  },
+  {
+    id: "gal-deluxe-3",
+    title: "Deluxe Room LED TV & Entertainment Wall",
+    category: "Rooms",
+    image: "/images/room-deluxe-tv.jpg",
+    caption: "Wall-mounted LED TV with satellite channels, climate control AC, and traditional accent tilework."
+  },
+  {
+    id: "gal-bath-tub",
+    title: "Luxury Marble Soaking Bathtub",
+    category: "Amenities",
+    image: "/images/bathroom-bathtub.jpg",
+    caption: "Deep soaking marble bathtub with telephone shower and hot/cold water mixer."
+  },
+  {
+    id: "gal-bath-vanity",
+    title: "Modern En-Suite Bathroom Vanity",
+    category: "Amenities",
+    image: "/images/bathroom-sink-toilet.jpg",
+    caption: "Contemporary vessel sink vanity, wall-hung WC, and designer ceramic tile finishes."
+  },
+  {
+    id: "gal-bath-ensuite",
+    title: "En-Suite Bathroom & Sanitary Amenities",
+    category: "Amenities",
+    image: "/images/bathroom-ensuite.jpg",
+    caption: "Spotlessly maintained bathroom with large vanity mirror and 24/7 hot & cold shower."
+  },
+  {
+    id: "gal-restaurant-thali",
+    title: "Famous Family Thali Dining",
+    category: "Dining",
+    image: "/images/5bd7063b4c21cd0001298965.jpg",
+    caption: "Authentic multi-dish Rajasthani & North Indian thali arrangements."
+  },
+  {
+    id: "gal-banquet",
     title: "Banquet & Party Hall",
     category: "Events",
     image: "/images/5bd7054ac52ae30001ddb980.jpg",
-    caption: "Celebration and meeting space near Udaipur Bus Stand."
+    caption: "Celebration, gathering and meeting space near Udaipur Bus Stand."
   },
   {
-    id: "gal-6",
-    title: "Dining & Party Arrangements",
-    category: "Dining",
-    image: "/images/5bd7063b4c21cd0001298965.jpg",
-    caption: "Catering for family thalis, group gatherings, and banquet events."
-  },
-  {
-    id: "gal-7",
-    title: "Guest Accommodation Details",
-    category: "Rooms",
-    image: "/images/5c0e84c3a6976f00019faa7c.jpg",
-    caption: "Comfortable bedding, clean linens, and serene room aesthetics."
-  },
-  {
-    id: "gal-8",
-    title: "Udaipur Sightseeing — Fateh Sagar",
+    id: "gal-fatehsagar",
+    title: "Fateh Sagar Lake Sightseeing",
     category: "Sightseeing",
     image: "/images/fathesagar-madurai-5bb0848c492e1200012bca9d.jpg",
-    caption: "Picturesque views at Fateh Sagar lakefront, easily reachable from the hotel."
+    caption: "Picturesque waterfront promenades and boating at Fateh Sagar Lake."
   },
   {
-    id: "gal-9",
-    title: "Sahelion Ki Bari Gardens",
+    id: "gal-gardens",
+    title: "Sahelion Ki Bari Royal Gardens",
     category: "Sightseeing",
     image: "/images/shareiq-577-1454412891-530251-jpg-destreviewimages-720x512-1454412891-cropped-5bb08524492e1200012bca9e.jpg",
-    caption: "Royal heritage fountain gardens of Udaipur."
+    caption: "Historic 18th-century royal marble fountains and garden pavilions."
   }
 ];
 
@@ -337,28 +421,28 @@ export const HOTEL_UPDATES = [
     title: "Best 3 Star Hotel to stay in Lakecity",
     date: "June 14, 2021",
     snippet: "Hotel Madurai Udaipur welcomes you to the City of Lakes with modern amenities, prime connectivity, and warm hospitality.",
-    image: "/images/60c75105203f050001fee357.jpg"
+    image: "/images/hotel-exterior-facade.jpg"
   },
   {
     id: "up-2",
-    title: "Family Thali Near Udaipur Station",
+    title: "Family Thali & Multi-Cuisine Dining",
     date: "October 29, 2018",
-    snippet: "Enjoy delicious, authentic multi-dish Indian thalis prepared fresh with genuine home-style flavors for families and travelers.",
-    image: "/images/5bd7063b4c21cd0001298965.jpg"
+    snippet: "Enjoy delicious, authentic multi-dish Indian thalis and continental breakfast prepared fresh with genuine home-style flavors.",
+    image: "/images/restaurant-dining-hall.jpg"
   },
   {
     id: "up-3",
-    title: "Party Hall Near Udaipur Bus Stand",
+    title: "24/7 Reception & Lift Accessibility",
     date: "October 29, 2018",
-    snippet: "Conveniently located event and gathering space for parties, family milestones, and group tour meal functions.",
-    image: "/images/5bd7054ac52ae30001ddb980.jpg"
+    snippet: "Passenger elevator serving all guestroom floors, 24/7 reception, and travel desk near Udaipur Railway Station.",
+    image: "/images/hotel-reception-lobby.jpg"
   },
   {
     id: "up-4",
-    title: "Reasonable Rooms in Central Udaipur",
+    title: "Reasonable Luxury Rooms in Central Udaipur",
     date: "December 10, 2018",
     snippet: "Affordable luxury combining air conditioned comfort, prompt service, and unbeatable access to transport hubs.",
-    image: "/images/5c0e84c3a6976f00019faa7c.jpg"
+    image: "/images/room-super-deluxe-main.jpg"
   }
 ];
 

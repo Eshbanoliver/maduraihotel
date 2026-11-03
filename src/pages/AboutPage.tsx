@@ -20,8 +20,8 @@ export const AboutPage: React.FC = () => {
       <section className="bg-[#141414] text-white py-24 relative overflow-hidden border-b border-gold/30">
         <div className="absolute inset-0 opacity-25">
           <img 
-            src="/images/room-super-deluxe-large.jpg" 
-            alt="Hotel Madurai Header" 
+            src="/images/hotel-exterior-facade.jpg" 
+            alt="Hotel Madurai Facade" 
             className="w-full h-full object-cover animate-kenburns"
           />
         </div>
@@ -152,46 +152,97 @@ export const AboutPage: React.FC = () => {
       {/* Property Photographic Showcase */}
       <section className="pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-2">
+              Visual Highlights
+            </span>
+            <h3 className="text-3xl font-serif font-bold text-dark">
+              Explore Hotel Madurai
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-3 border border-gold/30 shadow-xl group overflow-hidden">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src="/images/room-super-deluxe-large.jpg"
+                  src="/images/hotel-exterior-facade.jpg"
+                  alt="Hotel Madurai Building Facade"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-106"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <span className="font-serif font-bold text-dark text-lg block">Grand Property Facade</span>
+                <span className="text-xs text-gold uppercase tracking-luxury font-semibold">Udaipole Market • Central Udaipur</span>
+              </div>
+            </div>
+
+            <div className="bg-white p-3 border border-gold/30 shadow-xl group overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src="/images/hotel-reception-lobby.jpg"
+                  alt="Hotel Madurai Reception Lobby"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-106"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <span className="font-serif font-bold text-dark text-lg block">Grand Lobby & Lounge</span>
+                <span className="text-xs text-gold uppercase tracking-luxury font-semibold">24/7 Front Desk & Lift Access</span>
+              </div>
+            </div>
+
+            <div className="bg-white p-3 border border-gold/30 shadow-xl group overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src="/images/restaurant-dining-hall.jpg"
+                  alt="Hotel Madurai In-House Restaurant"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-106"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <span className="font-serif font-bold text-dark text-lg block">Multi-Cuisine Restaurant</span>
+                <span className="text-xs text-gold uppercase tracking-luxury font-semibold">Continental Breakfast & Family Thalis</span>
+              </div>
+            </div>
+
+            <div className="bg-white p-3 border border-gold/30 shadow-xl group overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src="/images/room-super-deluxe-main.jpg"
                   alt="Hotel Madurai Super Deluxe Room"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-106"
                 />
               </div>
               <div className="p-4 text-center">
                 <span className="font-serif font-bold text-dark text-lg block">Super Deluxe Room</span>
-                <span className="text-xs text-gold uppercase tracking-luxury font-semibold">Wood Finishings & High Ceilings</span>
+                <span className="text-xs text-gold uppercase tracking-luxury font-semibold">Tufted Headboard & Swan Art</span>
               </div>
             </div>
 
             <div className="bg-white p-3 border border-gold/30 shadow-xl group overflow-hidden">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src="/images/room-triple-bed-large.jpg"
+                  src="/images/room-triple-bed-main.jpg"
                   alt="Hotel Madurai Triple Bed Room"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-106"
                 />
               </div>
               <div className="p-4 text-center">
                 <span className="font-serif font-bold text-dark text-lg block">Triple Bed Room</span>
-                <span className="text-xs text-gold uppercase tracking-luxury font-semibold">Spacious Family Comfort</span>
+                <span className="text-xs text-gold uppercase tracking-luxury font-semibold">King + Single Bed Family Comfort</span>
               </div>
             </div>
 
             <div className="bg-white p-3 border border-gold/30 shadow-xl group overflow-hidden">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src="/images/room-deluxe-large.jpg"
+                  src="/images/room-deluxe-main.jpg"
                   alt="Hotel Madurai Deluxe Room"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-106"
                 />
               </div>
               <div className="p-4 text-center">
                 <span className="font-serif font-bold text-dark text-lg block">Deluxe Room</span>
-                <span className="text-xs text-gold uppercase tracking-luxury font-semibold">City Views & Modern Practicality</span>
+                <span className="text-xs text-gold uppercase tracking-luxury font-semibold">City Views & Seating Lounge</span>
               </div>
             </div>
           </div>
