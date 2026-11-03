@@ -94,7 +94,7 @@ export const Navbar: React.FC = () => {
       <header className="sticky top-0 z-50 transition-all duration-300">
         {/* Top Luxury Announcement Bar - visible on large screens */}
         <div className="bg-[#101010] text-xs text-gray-300 border-b border-gold/20 hidden lg:block">
-          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 py-2 flex justify-between items-center">
+          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
             
             <div className="flex items-center space-x-6 text-[11px]">
               <span className="flex items-center text-gray-300 hover:text-gold transition">
@@ -140,42 +140,42 @@ export const Navbar: React.FC = () => {
         <nav 
           className={`w-full transition-all duration-300 ${
             scrolled 
-              ? 'bg-[#141414]/98 backdrop-blur-xl shadow-2xl py-3 border-b border-gold/30' 
-              : 'bg-[#181818] py-4 border-b border-white/10'
+              ? 'bg-[#141414]/98 backdrop-blur-xl shadow-2xl py-2.5 sm:py-3 border-b border-gold/30' 
+              : 'bg-[#181818] py-3 sm:py-3.5 border-b border-white/10'
           }`}
         >
-          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 flex items-center justify-between">
+          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 lg:gap-3">
             
             {/* Logo / Brand Identity - Fixed flex-shrink-0 with clear separation */}
-            <Link to="/" className="flex items-center space-x-3.5 group flex-shrink-0 mr-6 lg:mr-8 xl:mr-10">
+            <Link to="/" className="flex items-center space-x-2.5 sm:space-x-3 group flex-shrink-0 mr-2 xl:mr-4">
               <div className="relative flex-shrink-0">
                 <img 
                   src="/images/hotel-madurai-logo.jpg" 
                   alt="Hotel Madurai Emblem" 
-                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border-2 border-gold/70 object-cover shadow-md group-hover:scale-105 transition duration-300"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-gold/70 object-cover shadow-md group-hover:scale-105 transition duration-300"
                 />
                 <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-gold rounded-full border-2 border-[#181818] flex items-center justify-center">
                   <Star className="w-2 h-2 text-[#181818] fill-[#181818]" />
                 </span>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-base sm:text-xl xl:text-2xl font-bold tracking-luxury text-white group-hover:text-gold transition duration-200 whitespace-nowrap">
+                <span className="font-serif text-sm sm:text-base lg:text-lg xl:text-xl font-bold tracking-wider text-white group-hover:text-gold transition duration-200 whitespace-nowrap">
                   HOTEL MADURAI
                 </span>
-                <span className="text-[8.5px] sm:text-[10px] tracking-widest uppercase text-gold/90 font-sans font-semibold -mt-0.5 flex items-center whitespace-nowrap">
+                <span className="text-[8px] sm:text-[9.5px] tracking-widest uppercase text-gold/90 font-sans font-semibold -mt-0.5 flex items-center whitespace-nowrap">
                   <span>UDAIPUR</span>
-                  <span className="mx-1.5 opacity-50">•</span>
+                  <span className="mx-1 opacity-50">•</span>
                   <span>RAJASTHAN</span>
                 </span>
               </div>
             </Link>
 
-            {/* Desktop Navigation Links - Perfectly spaced without colliding */}
-            <div className="hidden xl:flex items-center space-x-1 2xl:space-x-2">
+            {/* Desktop Navigation Links - Compact & robust spacing to prevent overflow */}
+            <div className="hidden xl:flex items-center space-x-0.5 2xl:space-x-1 flex-shrink">
               {/* Home */}
               <Link
                 to="/"
-                className={`px-3 py-2 text-[12px] xl:text-[13px] uppercase tracking-luxury font-medium transition-all duration-200 relative whitespace-nowrap rounded ${
+                className={`px-2 xl:px-2.5 py-1.5 text-[11px] xl:text-[12px] 2xl:text-[12.5px] uppercase tracking-wide font-semibold transition-all duration-200 relative whitespace-nowrap rounded ${
                   isActive('/')
                     ? 'text-gold font-bold bg-white/5'
                     : 'text-gray-300 hover:text-gold hover:bg-white/5'
@@ -183,14 +183,14 @@ export const Navbar: React.FC = () => {
               >
                 Home
                 {isActive('/') && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gold rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gold rounded-full" />
                 )}
               </Link>
 
               {/* About */}
               <Link
                 to="/about"
-                className={`px-3 py-2 text-[12px] xl:text-[13px] uppercase tracking-luxury font-medium transition-all duration-200 relative whitespace-nowrap rounded ${
+                className={`px-2 xl:px-2.5 py-1.5 text-[11px] xl:text-[12px] 2xl:text-[12.5px] uppercase tracking-wide font-semibold transition-all duration-200 relative whitespace-nowrap rounded ${
                   isActive('/about')
                     ? 'text-gold font-bold bg-white/5'
                     : 'text-gray-300 hover:text-gold hover:bg-white/5'
@@ -198,14 +198,14 @@ export const Navbar: React.FC = () => {
               >
                 About
                 {isActive('/about') && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gold rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gold rounded-full" />
                 )}
               </Link>
 
               {/* Rooms */}
               <Link
                 to="/rooms"
-                className={`px-3 py-2 text-[12px] xl:text-[13px] uppercase tracking-luxury font-medium transition-all duration-200 relative whitespace-nowrap rounded ${
+                className={`px-2 xl:px-2.5 py-1.5 text-[11px] xl:text-[12px] 2xl:text-[12.5px] uppercase tracking-wide font-semibold transition-all duration-200 relative whitespace-nowrap rounded ${
                   isActive('/rooms')
                     ? 'text-gold font-bold bg-white/5'
                     : 'text-gray-300 hover:text-gold hover:bg-white/5'
@@ -213,14 +213,14 @@ export const Navbar: React.FC = () => {
               >
                 Rooms
                 {isActive('/rooms') && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gold rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gold rounded-full" />
                 )}
               </Link>
 
               {/* Facilities */}
               <Link
                 to="/facilities"
-                className={`px-3 py-2 text-[12px] xl:text-[13px] uppercase tracking-luxury font-medium transition-all duration-200 relative whitespace-nowrap rounded ${
+                className={`px-2 xl:px-2.5 py-1.5 text-[11px] xl:text-[12px] 2xl:text-[12.5px] uppercase tracking-wide font-semibold transition-all duration-200 relative whitespace-nowrap rounded ${
                   isActive('/facilities')
                     ? 'text-gold font-bold bg-white/5'
                     : 'text-gray-300 hover:text-gold hover:bg-white/5'
@@ -228,7 +228,7 @@ export const Navbar: React.FC = () => {
               >
                 Facilities
                 {isActive('/facilities') && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gold rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gold rounded-full" />
                 )}
               </Link>
 
@@ -241,7 +241,7 @@ export const Navbar: React.FC = () => {
               >
                 <button
                   onClick={() => setDiningDropdownOpen(!diningDropdownOpen)}
-                  className={`px-3 py-2 text-[12px] xl:text-[13px] uppercase tracking-luxury font-medium transition-all duration-200 relative whitespace-nowrap rounded inline-flex items-center space-x-1 ${
+                  className={`px-2 xl:px-2.5 py-1.5 text-[11px] xl:text-[12px] 2xl:text-[12.5px] uppercase tracking-wide font-semibold transition-all duration-200 relative whitespace-nowrap rounded inline-flex items-center space-x-1 ${
                     isDiningActive()
                       ? 'text-gold font-bold bg-white/5'
                       : 'text-gray-300 hover:text-gold hover:bg-white/5'
@@ -251,7 +251,7 @@ export const Navbar: React.FC = () => {
                   <span>Dining & Bar</span>
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${diningDropdownOpen ? 'rotate-180 text-gold' : 'text-gray-400'}`} />
                   {isDiningActive() && (
-                    <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gold rounded-full" />
+                    <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gold rounded-full" />
                   )}
                 </button>
 
@@ -309,7 +309,7 @@ export const Navbar: React.FC = () => {
               {/* Gallery */}
               <Link
                 to="/gallery"
-                className={`px-3 py-2 text-[12px] xl:text-[13px] uppercase tracking-luxury font-medium transition-all duration-200 relative whitespace-nowrap rounded ${
+                className={`px-2 xl:px-2.5 py-1.5 text-[11px] xl:text-[12px] 2xl:text-[12.5px] uppercase tracking-wide font-semibold transition-all duration-200 relative whitespace-nowrap rounded ${
                   isActive('/gallery')
                     ? 'text-gold font-bold bg-white/5'
                     : 'text-gray-300 hover:text-gold hover:bg-white/5'
@@ -317,14 +317,14 @@ export const Navbar: React.FC = () => {
               >
                 Gallery
                 {isActive('/gallery') && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gold rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gold rounded-full" />
                 )}
               </Link>
 
               {/* Reviews */}
               <Link
                 to="/testimonials"
-                className={`px-3 py-2 text-[12px] xl:text-[13px] uppercase tracking-luxury font-medium transition-all duration-200 relative whitespace-nowrap rounded ${
+                className={`px-2 xl:px-2.5 py-1.5 text-[11px] xl:text-[12px] 2xl:text-[12.5px] uppercase tracking-wide font-semibold transition-all duration-200 relative whitespace-nowrap rounded ${
                   isActive('/testimonials')
                     ? 'text-gold font-bold bg-white/5'
                     : 'text-gray-300 hover:text-gold hover:bg-white/5'
@@ -332,14 +332,14 @@ export const Navbar: React.FC = () => {
               >
                 Reviews
                 {isActive('/testimonials') && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gold rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gold rounded-full" />
                 )}
               </Link>
 
               {/* Location */}
               <Link
                 to="/location"
-                className={`px-3 py-2 text-[12px] xl:text-[13px] uppercase tracking-luxury font-medium transition-all duration-200 relative whitespace-nowrap rounded ${
+                className={`px-2 xl:px-2.5 py-1.5 text-[11px] xl:text-[12px] 2xl:text-[12.5px] uppercase tracking-wide font-semibold transition-all duration-200 relative whitespace-nowrap rounded ${
                   isActive('/location')
                     ? 'text-gold font-bold bg-white/5'
                     : 'text-gray-300 hover:text-gold hover:bg-white/5'
@@ -347,14 +347,14 @@ export const Navbar: React.FC = () => {
               >
                 Location
                 {isActive('/location') && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gold rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gold rounded-full" />
                 )}
               </Link>
 
               {/* Contact */}
               <Link
                 to="/contact"
-                className={`px-3 py-2 text-[12px] xl:text-[13px] uppercase tracking-luxury font-medium transition-all duration-200 relative whitespace-nowrap rounded ${
+                className={`px-2 xl:px-2.5 py-1.5 text-[11px] xl:text-[12px] 2xl:text-[12.5px] uppercase tracking-wide font-semibold transition-all duration-200 relative whitespace-nowrap rounded ${
                   isActive('/contact')
                     ? 'text-gold font-bold bg-white/5'
                     : 'text-gray-300 hover:text-gold hover:bg-white/5'
@@ -362,18 +362,18 @@ export const Navbar: React.FC = () => {
               >
                 Contact
                 {isActive('/contact') && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gold rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gold rounded-full" />
                 )}
               </Link>
             </div>
 
-            {/* Header Right Action CTA Buttons */}
-            <div className="hidden sm:flex items-center space-x-3 flex-shrink-0 ml-4 xl:ml-6">
+            {/* Header Right Action CTA Buttons - Fixed ml-auto & compact to eliminate right collapse */}
+            <div className="hidden sm:flex items-center space-x-2 xl:space-x-2.5 flex-shrink-0 ml-auto pl-1 sm:pl-2">
               <a
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden xl:inline-flex items-center justify-center px-4 py-2.5 text-xs uppercase tracking-luxury font-semibold border border-gold/50 text-gold hover:bg-gold hover:text-[#141414] transition duration-200 whitespace-nowrap"
+                className="hidden xl:inline-flex items-center justify-center px-3 py-2 text-xs uppercase tracking-wider font-semibold border border-gold/50 text-gold hover:bg-gold hover:text-[#141414] transition duration-200 whitespace-nowrap rounded-sm"
               >
                 <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
                 Enquire
@@ -382,7 +382,7 @@ export const Navbar: React.FC = () => {
                 href={HOTEL_INFO.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="gold-glow-button shimmer-badge inline-flex items-center justify-center px-5 py-2.5 text-xs uppercase tracking-luxury font-bold text-[#121212] shadow-lg transition-all duration-200 hover:scale-[1.03] active:scale-95 whitespace-nowrap cursor-pointer"
+                className="gold-glow-button shimmer-badge inline-flex items-center justify-center px-3.5 py-2 xl:px-4 xl:py-2 text-xs uppercase tracking-wider font-bold text-[#121212] shadow-lg transition-all duration-200 hover:scale-[1.03] active:scale-95 whitespace-nowrap cursor-pointer rounded-sm"
               >
                 <Calendar className="w-3.5 h-3.5 mr-1.5" />
                 Book Direct
