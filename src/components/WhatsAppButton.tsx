@@ -48,7 +48,7 @@ export const WhatsAppButton: React.FC = () => {
           <div className="mb-3 p-4 bg-white border-2 border-gold/60 shadow-2xl max-w-xs text-xs text-gray-700 animate-fadeIn relative">
             <button 
               onClick={() => setShowTooltip(false)}
-              className="absolute top-2 right-2 text-gray-400 hover:text-dark cursor-pointer"
+              className="absolute top-2 right-2 text-gray-400 hover:text-dark cursor-pointer p-1"
               aria-label="Close message"
             >
               <X className="w-3.5 h-3.5" />

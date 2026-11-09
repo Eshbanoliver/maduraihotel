@@ -28,7 +28,12 @@ import {
   Coffee,
   MapPinned,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  ChevronDown,
+  ChevronUp,
+  HelpCircle,
+  Building2,
+  BadgeCheck
 } from 'lucide-react';
 import { 
   HOTEL_INFO, 
@@ -80,9 +85,37 @@ const HERO_SLIDES = [
   }
 ];
 
+const FAQS = [
+  {
+    question: "What are the standard Check-in and Check-out timings?",
+    answer: "Check-in time is 12:00 PM and Check-out time is 11:00 AM. Our reception desk operates 24 hours daily, so guests arriving on early morning or late night trains can easily check-in or securely store luggage with our concierge."
+  },
+  {
+    question: "How close is Hotel Madurai to Udaipur Railway Station and Bus Stand?",
+    answer: "Hotel Madurai is located in Shrinath Market, Udaipole (behind State Bank of Indore). We are less than 1 km from Udaipur City Railway Station (5 minutes by car/auto) and within walking distance (< 500 meters) from the Udaipole Central Bus Stand."
+  },
+  {
+    question: "What dining options and breakfasts are available?",
+    answer: "We offer daily rich continental breakfasts served in our cozy breakfast room. Our in-house restaurant serves celebrated regional Indian Family Thalis, and guests can unwind in the evening at our dedicated Underground Bar."
+  },
+  {
+    question: "Does the hotel have passenger elevator (lift) and accessibility?",
+    answer: "Yes, Hotel Madurai features a modern passenger lift serving all guestroom floors, along with luggage assistance from our welcoming front desk team."
+  },
+  {
+    question: "Can the hotel arrange railway station transfers and sightseeing tours?",
+    answer: "Yes! Our 24/7 travel desk arranges pick-up and drop transfers from Udaipur City Railway Station and Maharana Pratap Airport (UDR), as well as private cabs for Lake Pichola, City Palace, Fateh Sagar, and Kumbhalgarh tours."
+  },
+  {
+    question: "What are the benefits of booking directly on this official website?",
+    answer: "Booking directly on our official portal guarantees the lowest available rate with zero booking fees, flexible cancellation options, and direct personal communication with our on-property reservation team."
+  }
+];
+
 export const HomePage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [activeFaq, setActiveFaq] = useState<number | null>(0);
 
   useEffect(() => {
     if (isPaused) return;
@@ -105,11 +138,11 @@ export const HomePage: React.FC = () => {
       
       {/* 1. MAJESTIC HERO SECTION WITH INTERACTIVE SLIDER */}
       <section 
-        className="relative min-h-[94vh] flex items-center justify-center bg-[#101010] overflow-hidden select-none"
+        className="relative min-h-[92vh] sm:min-h-[94vh] flex items-center justify-center bg-[#101010] overflow-hidden select-none"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {/* Slider Background Images: 1st Hotel, 2nd Room, 3rd Restaurant */}
+        {/* Slider Background Images */}
         <div className="absolute inset-0 z-0">
           {HERO_SLIDES.map((slide, idx) => (
             <div
@@ -151,14 +184,14 @@ export const HomePage: React.FC = () => {
         </button>
 
         {/* Bottom Slide Indicators with Category Labels */}
-        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center space-x-2 sm:space-x-3 bg-black/60 backdrop-blur-md py-2 px-3 sm:px-4 rounded-full border border-white/20 shadow-2xl">
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center space-x-2 sm:space-x-3 bg-black/60 backdrop-blur-md py-1.5 sm:py-2 px-3 sm:px-4 rounded-full border border-white/20 shadow-2xl">
           {HERO_SLIDES.map((slide, idx) => (
             <button
               key={slide.id}
               type="button"
               onClick={() => setCurrentSlide(idx)}
               aria-label={`Switch to slide ${idx + 1}: ${slide.badge}`}
-              className={`flex items-center space-x-2 py-1.5 px-3 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer ${
+              className={`flex items-center space-x-1.5 sm:space-x-2 py-1 px-2.5 sm:px-3 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer ${
                 idx === currentSlide
                   ? 'bg-gradient-to-r from-[#D4AF37] via-[#FFDF73] to-[#B8860B] text-black shadow-lg font-bold scale-105'
                   : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -171,15 +204,15 @@ export const HomePage: React.FC = () => {
           ))}
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
-          <div className="max-w-3xl bg-black/40 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/15 shadow-2xl">
+        {/* Hero Content Stage */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-24 w-full">
+          <div className="max-w-3xl bg-black/45 backdrop-blur-md p-6 sm:p-8 lg:p-9 rounded-2xl border border-white/20 shadow-2xl">
             
             {/* Active Slide Category Pill & Trust Badge */}
-            <div className="flex flex-wrap items-center gap-2.5 mb-5">
+            <div className="flex flex-wrap items-center gap-2.5 mb-4 sm:mb-5">
               <span className="inline-flex items-center space-x-1.5 bg-gold/90 text-black px-3 py-1 text-[11px] font-bold uppercase tracking-wider rounded-full shadow-md">
                 <span className="w-2 h-2 rounded-full bg-black animate-ping" />
-                <span>Slide {currentSlide + 1} of 3: {HERO_SLIDES[currentSlide].badge}</span>
+                <span>Slide {currentSlide + 1} of {HERO_SLIDES.length}: {HERO_SLIDES[currentSlide].badge}</span>
               </span>
 
               <div className="inline-flex items-center flex-wrap gap-2 bg-[#1C1C1C]/90 backdrop-blur-md border border-gold/60 px-3.5 py-1 text-xs uppercase tracking-luxury text-gold font-serif font-bold shadow-xl rounded-full">
@@ -200,7 +233,7 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Dynamic Headline synced with Slide */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white leading-[1.14] mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-white leading-[1.15] mb-4 sm:mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
               {HERO_SLIDES[currentSlide].headline}{' '}
               <span className="gold-gradient-text drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                 {HERO_SLIDES[currentSlide].highlight}
@@ -208,17 +241,17 @@ export const HomePage: React.FC = () => {
             </h1>
 
             {/* Dynamic Description synced with Slide */}
-            <p className="text-sm sm:text-base text-gray-100 font-medium leading-relaxed mb-7 max-w-2xl font-sans drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
+            <p className="text-xs sm:text-sm lg:text-base text-gray-100 font-medium leading-relaxed mb-6 sm:mb-7 max-w-2xl font-sans drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
               {HERO_SLIDES[currentSlide].description}
             </p>
 
             {/* Hero Action CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
               <a
                 href={HOTEL_INFO.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="gold-glow-button shimmer-badge py-3.5 px-7 text-[#121212] font-bold text-xs uppercase tracking-luxury shadow-2xl transition-all duration-300 hover:scale-[1.03] flex items-center justify-center text-center cursor-pointer rounded-sm"
+                className="gold-glow-button shimmer-badge py-3.5 px-6 sm:px-7 text-[#121212] font-bold text-xs uppercase tracking-luxury shadow-2xl transition-all duration-300 hover:scale-[1.03] flex items-center justify-center text-center cursor-pointer rounded-sm"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 <span>Book Direct & Save</span>
@@ -230,27 +263,27 @@ export const HomePage: React.FC = () => {
                 rel="noopener noreferrer"
                 className="emerald-glow-button py-3.5 px-6 text-white font-bold text-xs uppercase tracking-luxury backdrop-blur-md transition-all duration-300 flex items-center justify-center text-center shadow-lg group hover:scale-[1.03] cursor-pointer rounded-sm"
               >
-                <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse mr-2.5" />
+                <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse mr-2" />
                 <MessageCircle className="w-4 h-4 mr-2 text-white" />
                 <span>WhatsApp Front Desk</span>
               </a>
 
               <Link
                 to={currentSlide === 2 ? "/restaurant" : currentSlide === 3 ? "/about" : "/rooms"}
-                className="py-3.5 px-5 border-2 border-white/40 text-white hover:border-gold hover:text-gold-bright text-xs uppercase tracking-luxury transition font-semibold backdrop-blur-sm flex items-center justify-center text-center hover:bg-white/10 rounded-sm"
+                className="py-3.5 px-5 border-2 border-white/50 text-white hover:border-gold hover:text-gold-bright text-xs uppercase tracking-luxury transition font-semibold backdrop-blur-sm flex items-center justify-center text-center hover:bg-white/10 rounded-sm"
               >
                 <span>{currentSlide === 2 ? "View Dining" : currentSlide === 3 ? "About Hotel" : "View Suites"}</span>
               </Link>
             </div>
 
             {/* Quick Transport Distance & Trust Badges */}
-            <div className="mt-8 pt-5 border-t border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-sans">
+            <div className="mt-7 pt-4 border-t border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-xs font-sans">
               <div className="flex items-center space-x-2 text-gray-200">
                 <span className="p-1.5 bg-emerald-500/20 text-emerald-400 rounded border border-emerald-500/40">
                   <MapPin className="w-3.5 h-3.5" />
                 </span>
                 <div>
-                  <span className="font-bold text-white block">Udaipole Stand</span>
+                  <span className="font-bold text-white block text-xs">Udaipole Stand</span>
                   <span className="text-[11px] text-emerald-400">Walking Distance</span>
                 </div>
               </div>
@@ -260,7 +293,7 @@ export const HomePage: React.FC = () => {
                   <Car className="w-3.5 h-3.5" />
                 </span>
                 <div>
-                  <span className="font-bold text-white block">Railway Station</span>
+                  <span className="font-bold text-white block text-xs">Railway Station</span>
                   <span className="text-[11px] text-cyan-400">&lt; 1 km (5 Mins)</span>
                 </div>
               </div>
@@ -270,7 +303,7 @@ export const HomePage: React.FC = () => {
                   <Compass className="w-3.5 h-3.5" />
                 </span>
                 <div>
-                  <span className="font-bold text-white block">City Palace</span>
+                  <span className="font-bold text-white block text-xs">City Palace</span>
                   <span className="text-[11px] text-amber-400">~10 Mins Drive</span>
                 </div>
               </div>
@@ -280,7 +313,7 @@ export const HomePage: React.FC = () => {
                   <ShieldCheck className="w-3.5 h-3.5" />
                 </span>
                 <div>
-                  <span className="font-bold text-white block">Direct Guarantee</span>
+                  <span className="font-bold text-white block text-xs">Direct Guarantee</span>
                   <span className="text-[11px] text-rose-400">Zero Extra Fees</span>
                 </div>
               </div>
@@ -290,12 +323,12 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* RESERVATION QUICK BAR (Floating over section break) */}
-      <section className="relative z-20 -mt-12 max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="relative z-20 -mt-10 sm:-mt-12 max-w-7xl mx-auto px-4 sm:px-6">
         <BookingBar />
       </section>
 
       {/* STATS & CREDENTIALS STRIP WITH RICH COLOR ACCENTS */}
-      <section className="py-12 bg-white border-b border-gold/25">
+      <section className="py-12 sm:py-14 bg-white border-b border-gold/25">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center">
             
@@ -436,7 +469,7 @@ export const HomePage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-4 flex flex-wrap gap-5 items-center">
+              <div className="pt-4 flex flex-wrap gap-4 items-center">
                 <Link
                   to="/about"
                   className="gold-glow-button inline-flex items-center text-xs uppercase tracking-luxury font-bold text-dark py-3 px-6 shadow-md"
@@ -460,9 +493,9 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 3. ROOM CATEGORIES SHOWCASE */}
-      <section className="py-24 bg-white border-y border-gold/25 relative">
+      <section className="py-20 sm:py-24 bg-white border-y border-gold/25 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
             <div>
               <div className="inline-flex items-center space-x-2 bg-amber-100/80 border border-amber-300 px-3 py-1 mb-3">
                 <Sparkles className="w-3.5 h-3.5 text-amber-700" />
@@ -495,8 +528,8 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. AUTHENTIC HOTEL FACILITIES - COLORFUL & VIBRANT */}
-      <section className="py-24 bg-[#121212] text-white relative overflow-hidden">
+      {/* 4. AUTHENTIC HOTEL FACILITIES */}
+      <section className="py-20 sm:py-24 bg-[#121212] text-white relative overflow-hidden">
         {/* Colorful ambient background light */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -520,11 +553,11 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Facility 1: Split AC */}
-            <div className="p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-cyan-400/80 transition-all duration-300 group hover:-translate-y-2 shadow-xl hover:shadow-cyan-500/15">
-              <div className="p-3.5 bg-gradient-to-br from-cyan-400 to-blue-600 text-white inline-block mb-5 shadow-lg shadow-cyan-500/25 group-hover:scale-110 transition duration-300">
-                <Wind className="w-7 h-7" />
+            <div className="p-6 sm:p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-cyan-400/80 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl hover:shadow-cyan-500/15">
+              <div className="p-3 bg-gradient-to-br from-cyan-400 to-blue-600 text-white inline-block mb-4 shadow-lg shadow-cyan-500/25 group-hover:scale-110 transition duration-300">
+                <Wind className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-lg font-bold mb-2 group-hover:text-cyan-300 transition">
+              <h3 className="font-serif text-lg font-bold mb-1.5 group-hover:text-cyan-300 transition">
                 Split Air Conditioning
               </h3>
               <p className="text-xs text-gray-400 leading-relaxed font-sans">
@@ -533,11 +566,11 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Facility 2: High Speed WiFi */}
-            <div className="p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-emerald-400/80 transition-all duration-300 group hover:-translate-y-2 shadow-xl hover:shadow-emerald-500/15">
-              <div className="p-3.5 bg-gradient-to-br from-emerald-400 to-teal-600 text-white inline-block mb-5 shadow-lg shadow-emerald-500/25 group-hover:scale-110 transition duration-300">
-                <Wifi className="w-7 h-7" />
+            <div className="p-6 sm:p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-emerald-400/80 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl hover:shadow-emerald-500/15">
+              <div className="p-3 bg-gradient-to-br from-emerald-400 to-teal-600 text-white inline-block mb-4 shadow-lg shadow-emerald-500/25 group-hover:scale-110 transition duration-300">
+                <Wifi className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-lg font-bold mb-2 group-hover:text-emerald-300 transition">
+              <h3 className="font-serif text-lg font-bold mb-1.5 group-hover:text-emerald-300 transition">
                 High-Speed WiFi
               </h3>
               <p className="text-xs text-gray-400 leading-relaxed font-sans">
@@ -546,11 +579,11 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Facility 3: Satellite TV */}
-            <div className="p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-indigo-400/80 transition-all duration-300 group hover:-translate-y-2 shadow-xl hover:shadow-indigo-500/15">
-              <div className="p-3.5 bg-gradient-to-br from-indigo-500 to-purple-600 text-white inline-block mb-5 shadow-lg shadow-indigo-500/25 group-hover:scale-110 transition duration-300">
-                <Tv className="w-7 h-7" />
+            <div className="p-6 sm:p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-indigo-400/80 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl hover:shadow-indigo-500/15">
+              <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 text-white inline-block mb-4 shadow-lg shadow-indigo-500/25 group-hover:scale-110 transition duration-300">
+                <Tv className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-lg font-bold mb-2 group-hover:text-indigo-300 transition">
+              <h3 className="font-serif text-lg font-bold mb-1.5 group-hover:text-indigo-300 transition">
                 Cable & Satellite LED TV
               </h3>
               <p className="text-xs text-gray-400 leading-relaxed font-sans">
@@ -559,11 +592,11 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Facility 4: Hot & Cold Shower */}
-            <div className="p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-amber-400/80 transition-all duration-300 group hover:-translate-y-2 shadow-xl hover:shadow-amber-500/15">
-              <div className="p-3.5 bg-gradient-to-br from-amber-400 to-orange-500 text-white inline-block mb-5 shadow-lg shadow-amber-500/25 group-hover:scale-110 transition duration-300">
-                <Bath className="w-7 h-7" />
+            <div className="p-6 sm:p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-amber-400/80 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl hover:shadow-amber-500/15">
+              <div className="p-3 bg-gradient-to-br from-amber-400 to-orange-500 text-white inline-block mb-4 shadow-lg shadow-amber-500/25 group-hover:scale-110 transition duration-300">
+                <Bath className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-lg font-bold mb-2 group-hover:text-amber-300 transition">
+              <h3 className="font-serif text-lg font-bold mb-1.5 group-hover:text-amber-300 transition">
                 Hot & Cold Shower
               </h3>
               <p className="text-xs text-gray-400 leading-relaxed font-sans">
@@ -572,11 +605,11 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Facility 5: Restaurant & Breakfast */}
-            <div className="p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-rose-400/80 transition-all duration-300 group hover:-translate-y-2 shadow-xl hover:shadow-rose-500/15">
-              <div className="p-3.5 bg-gradient-to-br from-rose-500 to-red-600 text-white inline-block mb-5 shadow-lg shadow-rose-500/25 group-hover:scale-110 transition duration-300">
-                <Utensils className="w-7 h-7" />
+            <div className="p-6 sm:p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-rose-400/80 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl hover:shadow-rose-500/15">
+              <div className="p-3 bg-gradient-to-br from-rose-500 to-red-600 text-white inline-block mb-4 shadow-lg shadow-rose-500/25 group-hover:scale-110 transition duration-300">
+                <Utensils className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-lg font-bold mb-2 group-hover:text-rose-300 transition">
+              <h3 className="font-serif text-lg font-bold mb-1.5 group-hover:text-rose-300 transition">
                 Restaurant & Breakfast Room
               </h3>
               <p className="text-xs text-gray-400 leading-relaxed font-sans">
@@ -585,24 +618,24 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Facility 6: Underground Bar */}
-            <div className="p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-fuchsia-400/80 transition-all duration-300 group hover:-translate-y-2 shadow-xl hover:shadow-fuchsia-500/15">
-              <div className="p-3.5 bg-gradient-to-br from-fuchsia-500 to-pink-600 text-white inline-block mb-5 shadow-lg shadow-fuchsia-500/25 group-hover:scale-110 transition duration-300">
-                <Wine className="w-7 h-7" />
+            <div className="p-6 sm:p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-fuchsia-400/80 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl hover:shadow-fuchsia-500/15">
+              <div className="p-3 bg-gradient-to-br from-fuchsia-500 to-pink-600 text-white inline-block mb-4 shadow-lg shadow-fuchsia-500/25 group-hover:scale-110 transition duration-300">
+                <Wine className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-lg font-bold mb-2 group-hover:text-fuchsia-300 transition">
+              <h3 className="font-serif text-lg font-bold mb-1.5 group-hover:text-fuchsia-300 transition">
                 Underground Bar & Lounge
               </h3>
               <p className="text-xs text-gray-400 leading-relaxed font-sans">
-                Dedicated subterranean lounge space for relaxing refreshments and evening cocktails.
+                Dedicated subterranean lounge space for relaxing refreshments and evening unwind.
               </p>
             </div>
 
             {/* Facility 7: Station Transfers */}
-            <div className="p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-teal-400/80 transition-all duration-300 group hover:-translate-y-2 shadow-xl hover:shadow-teal-500/15">
-              <div className="p-3.5 bg-gradient-to-br from-teal-400 to-emerald-600 text-white inline-block mb-5 shadow-lg shadow-teal-500/25 group-hover:scale-110 transition duration-300">
-                <Car className="w-7 h-7" />
+            <div className="p-6 sm:p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-teal-400/80 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl hover:shadow-teal-500/15">
+              <div className="p-3 bg-gradient-to-br from-teal-400 to-emerald-600 text-white inline-block mb-4 shadow-lg shadow-teal-500/25 group-hover:scale-110 transition duration-300">
+                <Car className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-lg font-bold mb-2 group-hover:text-teal-300 transition">
+              <h3 className="font-serif text-lg font-bold mb-1.5 group-hover:text-teal-300 transition">
                 Transfers & Travel Desk
               </h3>
               <p className="text-xs text-gray-400 leading-relaxed font-sans">
@@ -611,12 +644,12 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Facility 8: Laundry & Elevator */}
-            <div className="p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-blue-400/80 transition-all duration-300 group hover:-translate-y-2 shadow-xl hover:shadow-blue-500/15">
-              <div className="p-3.5 bg-gradient-to-br from-blue-500 to-cyan-600 text-white inline-block mb-5 shadow-lg shadow-blue-500/25 group-hover:scale-110 transition duration-300">
-                <Shirt className="w-7 h-7" />
+            <div className="p-6 sm:p-7 bg-[#1A1A1A] border-2 border-white/10 hover:border-blue-400/80 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl hover:shadow-blue-500/15">
+              <div className="p-3 bg-gradient-to-br from-blue-500 to-cyan-600 text-white inline-block mb-4 shadow-lg shadow-blue-500/25 group-hover:scale-110 transition duration-300">
+                <Shirt className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-lg font-bold mb-2 group-hover:text-blue-300 transition">
-                Passenger Lift & 24h Laundry
+              <h3 className="font-serif text-lg font-bold mb-1.5 group-hover:text-blue-300 transition">
+                Passenger Lift & Laundry
               </h3>
               <p className="text-xs text-gray-400 leading-relaxed font-sans">
                 Modern passenger elevator serving all floors and 24-hour laundry service support.
@@ -625,7 +658,7 @@ export const HomePage: React.FC = () => {
 
           </div>
 
-          <div className="text-center mt-14">
+          <div className="text-center mt-12 sm:mt-14">
             <Link
               to="/facilities"
               className="gold-glow-button inline-flex items-center text-xs uppercase tracking-luxury text-[#121212] font-bold py-3.5 px-8 shadow-xl"
@@ -638,9 +671,9 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 5. DINING & RESTAURANT HIGHLIGHT */}
-      <section className="py-24 bg-[#FAF8F5]">
+      <section className="py-20 sm:py-24 bg-[#FAF8F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-14 items-center">
             
             <div className="space-y-6">
               <div className="inline-flex items-center space-x-2 bg-rose-100/80 border border-rose-300 px-3 py-1">
@@ -654,45 +687,45 @@ export const HomePage: React.FC = () => {
                 Restaurant, Breakfast Room & Family Thali
               </h2>
               
-              <p className="text-gray-700 leading-relaxed text-base font-sans">
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base font-sans">
                 Begin your morning with our rich continental breakfast served in our cozy breakfast room, and savor wholesome traditional Indian favorites including our popular Family Thali near Udaipur Railway Station.
               </p>
 
               <div className="space-y-3 pt-2">
-                <div className="flex items-start text-sm text-gray-800 p-2.5 bg-white border border-emerald-200">
+                <div className="flex items-start text-xs sm:text-sm text-gray-800 p-3 bg-white border border-emerald-200 shadow-sm">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-3 mt-0.5 flex-shrink-0" />
                   <span><strong>Continental Breakfast:</strong> Served fresh daily in our dedicated breakfast room.</span>
                 </div>
-                <div className="flex items-start text-sm text-gray-800 p-2.5 bg-white border border-amber-200">
+                <div className="flex items-start text-xs sm:text-sm text-gray-800 p-3 bg-white border border-amber-200 shadow-sm">
                   <CheckCircle2 className="w-4 h-4 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
                   <span><strong>Family Thali:</strong> Wholesome, homestyle Indian delicacies prepared fresh.</span>
                 </div>
-                <div className="flex items-start text-sm text-gray-800 p-2.5 bg-white border border-purple-200">
+                <div className="flex items-start text-xs sm:text-sm text-gray-800 p-3 bg-white border border-purple-200 shadow-sm">
                   <CheckCircle2 className="w-4 h-4 text-purple-600 mr-3 mt-0.5 flex-shrink-0" />
                   <span><strong>Underground Bar:</strong> Dedicated relaxing subterranean bar & lounge venue.</span>
                 </div>
-                <div className="flex items-start text-sm text-gray-800 p-2.5 bg-white border border-sky-200">
+                <div className="flex items-start text-xs sm:text-sm text-gray-800 p-3 bg-white border border-sky-200 shadow-sm">
                   <CheckCircle2 className="w-4 h-4 text-sky-600 mr-3 mt-0.5 flex-shrink-0" />
                   <span><strong>Party Hall:</strong> Banquet & celebration venue for family gatherings in Udaipole.</span>
                 </div>
               </div>
 
-              <div className="pt-4 flex flex-wrap gap-4">
+              <div className="pt-3 flex flex-wrap gap-3">
                 <Link
                   to="/restaurant"
-                  className="px-6 py-3.5 bg-dark hover:bg-gold hover:text-dark text-white text-xs uppercase tracking-luxury font-bold transition shadow-md"
+                  className="px-5 py-3 bg-dark hover:bg-gold hover:text-dark text-white text-xs uppercase tracking-luxury font-bold transition shadow-md"
                 >
                   Restaurant Details
                 </Link>
                 <Link
                   to="/restaurant-menu"
-                  className="px-6 py-3.5 border-2 border-dark text-dark hover:bg-dark hover:text-white text-xs uppercase tracking-luxury font-bold transition"
+                  className="px-5 py-3 border-2 border-dark text-dark hover:bg-dark hover:text-white text-xs uppercase tracking-luxury font-bold transition"
                 >
                   View Menu Card
                 </Link>
                 <Link
                   to="/underground-bar"
-                  className="px-6 py-3.5 border-2 border-gold text-gold hover:bg-gold hover:text-dark text-xs uppercase tracking-luxury font-bold transition"
+                  className="px-5 py-3 border-2 border-gold text-gold hover:bg-gold hover:text-dark text-xs uppercase tracking-luxury font-bold transition"
                 >
                   Underground Bar
                 </Link>
@@ -719,12 +752,12 @@ export const HomePage: React.FC = () => {
                     className="w-full aspect-[4/3] object-cover"
                   />
                   <span className="text-xs text-gray-800 text-center block mt-2 font-bold">
-                    Famous Family Thali Arrangements
+                    Famous Family Thali Platter
                   </span>
                 </div>
               </div>
 
-              <div className="space-y-4 pt-6">
+              <div className="space-y-4 pt-0 sm:pt-6">
                 <div className="border-2 border-gold/40 p-2 bg-white shadow-xl card-elevated">
                   <img
                     src="/images/hotel-lobby-staff.jpg"
@@ -752,9 +785,9 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 6. REAL GUEST TESTIMONIALS */}
-      <section className="py-24 bg-white border-y border-gold/25">
+      <section className="py-20 sm:py-24 bg-white border-y border-gold/25">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-flex items-center space-x-1.5 px-3 py-1 bg-amber-100 border border-amber-300 text-amber-900 text-xs uppercase tracking-luxury font-bold mb-3">
               <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
               <span>Real Traveler Impressions</span>
@@ -768,14 +801,14 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {TESTIMONIALS.map((item) => (
               <div 
                 key={item.id} 
-                className="bg-gradient-to-br from-[#FAF8F5] to-white border-2 border-gold/30 p-8 flex flex-col justify-between shadow-card-subtle card-elevated relative group"
+                className="bg-gradient-to-br from-[#FAF8F5] to-white border-2 border-gold/30 p-6 sm:p-8 flex flex-col justify-between shadow-card-subtle card-elevated relative group"
               >
                 <div>
-                  <div className="flex text-amber-400 mb-4">
+                  <div className="flex text-amber-400 mb-3.5">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                     ))}
@@ -791,10 +824,10 @@ export const HomePage: React.FC = () => {
                       <img
                         src={item.avatar}
                         alt={item.author}
-                        className="w-12 h-12 rounded-full object-cover border-2 border-gold/70 shadow"
+                        className="w-11 h-11 rounded-full object-cover border-2 border-gold/70 shadow"
                       />
                     ) : (
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 text-dark font-serif font-bold flex items-center justify-center text-sm border-2 border-gold/50 shadow">
+                      <div className="w-11 h-11 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 text-dark font-serif font-bold flex items-center justify-center text-sm border-2 border-gold/50 shadow">
                         {item.author[0]}
                       </div>
                     )}
@@ -816,7 +849,7 @@ export const HomePage: React.FC = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-10">
             <Link
               to="/testimonials"
               className="inline-flex items-center text-xs uppercase tracking-luxury font-bold text-dark hover:text-gold transition border-b-2 border-dark hover:border-gold pb-1"
@@ -828,10 +861,75 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. NEARBY PLACES & LOCATION PREVIEW */}
-      <section className="py-24 bg-[#FAF8F5]">
+      {/* 7. FREQUENTLY ASKED QUESTIONS (ACCORDION) */}
+      <section className="py-20 sm:py-24 bg-[#FAF8F5] border-b border-gold/25">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center space-x-1.5 px-3 py-1 bg-amber-100 border border-amber-300 text-amber-900 text-xs uppercase tracking-luxury font-bold mb-3">
+              <HelpCircle className="w-3.5 h-3.5 text-amber-700" />
+              <span>Guest Assistance</span>
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-dark">
+              Frequently Asked Questions
+            </h2>
+            <div className="w-16 h-1 bg-gold mx-auto my-3" />
+            <p className="text-sm text-gray-600 font-sans">
+              Helpful details regarding check-in timings, transport connectivity, and direct booking perks.
+            </p>
+          </div>
+
+          <div className="space-y-3.5">
+            {FAQS.map((faq, index) => {
+              const isOpen = activeFaq === index;
+              return (
+                <div 
+                  key={index}
+                  className="bg-white border-2 border-gold/30 shadow-sm overflow-hidden transition-all duration-200"
+                >
+                  <button
+                    onClick={() => setActiveFaq(isOpen ? null : index)}
+                    className="w-full p-4 sm:p-5 text-left flex items-center justify-between text-dark hover:text-gold transition cursor-pointer"
+                  >
+                    <span className="font-serif text-sm sm:text-base font-bold pr-4 flex items-center">
+                      <span className="w-2 h-2 rounded-full bg-gold mr-3 flex-shrink-0" />
+                      {faq.question}
+                    </span>
+                    <span className="p-1 rounded bg-ivory text-gold flex-shrink-0">
+                      {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-gray-600 leading-relaxed font-sans border-t border-gold/15 bg-ivory/40">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-8 text-center bg-white p-5 border border-gold/30 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+            <span className="text-xs sm:text-sm text-gray-700 font-sans">
+              Have another question? Our 24/7 reception desk is available via call or WhatsApp.
+            </span>
+            <a
+              href={getWhatsAppUrl("FAQ Enquiry")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-xs uppercase tracking-luxury font-bold text-emerald-700 hover:text-emerald-800 transition"
+            >
+              <MessageCircle className="w-4 h-4 mr-1.5 text-emerald-600" />
+              <span>Ask Front Desk</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. NEARBY PLACES & LOCATION PREVIEW */}
+      <section className="py-20 sm:py-24 bg-white border-b border-gold/25">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
             <div>
               <div className="inline-flex items-center space-x-2 bg-emerald-100 border border-emerald-300 px-3 py-1 mb-3">
                 <MapPinned className="w-3.5 h-3.5 text-emerald-700" />
@@ -856,7 +954,7 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {NEARBY_PLACES.map((place) => (
               <div key={place.id} className="bg-white border-2 border-gold/30 shadow-luxury group overflow-hidden card-elevated">
                 <div className="relative aspect-[16/10] overflow-hidden">
@@ -886,10 +984,10 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. VERIFIED UPDATES & PROPERTY CHRONICLES */}
-      <section className="py-20 bg-white border-t border-gold/20">
+      {/* 9. VERIFIED UPDATES & PROPERTY CHRONICLES */}
+      <section className="py-16 sm:py-20 bg-[#FAF8F5] border-b border-gold/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-xl mx-auto mb-12">
+          <div className="text-center max-w-xl mx-auto mb-10 sm:mb-12">
             <span className="text-xs uppercase tracking-luxury text-gold-dark font-bold block mb-2">
               Property Chronicles
             </span>
@@ -898,9 +996,9 @@ export const HomePage: React.FC = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {HOTEL_UPDATES.map((post) => (
-              <div key={post.id} className="border-2 border-gold/25 p-4 bg-[#FAF8F5] hover:border-gold transition shadow-card-subtle card-elevated">
+              <div key={post.id} className="border-2 border-gold/25 p-4 bg-white hover:border-gold transition shadow-card-subtle card-elevated">
                 <img
                   src={post.image}
                   alt={post.title}
@@ -921,8 +1019,8 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 9. LUXURY FINAL CTA BANNER */}
-      <section className="py-24 bg-gradient-to-b from-[#141414] to-[#0A0A0A] text-white border-t-2 border-gold/40 relative overflow-hidden">
+      {/* 10. LUXURY FINAL CTA BANNER */}
+      <section className="py-20 sm:py-24 bg-gradient-to-b from-[#141414] to-[#0A0A0A] text-white border-t-2 border-gold/40 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
             src="/images/hotel-exterior-facade.jpg" 
@@ -945,16 +1043,16 @@ export const HomePage: React.FC = () => {
             Book Online Today and Look Forward to a Relaxing Stay With Us.
           </h2>
           
-          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto font-sans leading-relaxed">
+          <p className="text-gray-300 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto font-sans leading-relaxed">
             Call us directly on {HOTEL_INFO.phone} or chat on WhatsApp. Instant reservations with zero booking fees through our verified booking engine.
           </p>
 
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
+          <div className="pt-3 flex flex-wrap items-center justify-center gap-3.5">
             <a
               href={HOTEL_INFO.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="gold-glow-button shimmer-badge py-4 px-9 text-[#121212] font-bold text-xs uppercase tracking-luxury shadow-2xl transition hover:scale-105 cursor-pointer"
+              className="gold-glow-button shimmer-badge py-3.5 sm:py-4 px-8 sm:px-9 text-[#121212] font-bold text-xs uppercase tracking-luxury shadow-2xl transition hover:scale-105 cursor-pointer"
             >
               <Calendar className="w-4 h-4 inline-block mr-2 -mt-0.5" />
               <span>Book Online Direct</span>
@@ -964,7 +1062,7 @@ export const HomePage: React.FC = () => {
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="emerald-glow-button py-4 px-8 text-white font-bold text-xs uppercase tracking-luxury transition hover:scale-105 cursor-pointer"
+              className="emerald-glow-button py-3.5 sm:py-4 px-7 sm:px-8 text-white font-bold text-xs uppercase tracking-luxury transition hover:scale-105 cursor-pointer"
             >
               <MessageCircle className="w-4 h-4 inline-block mr-2 -mt-0.5" />
               <span>WhatsApp Front Desk</span>
@@ -972,7 +1070,7 @@ export const HomePage: React.FC = () => {
             
             <a
               href={`tel:${HOTEL_INFO.phone}`}
-              className="py-4 px-8 border-2 border-white/30 text-white hover:border-gold hover:text-gold-bright font-bold text-xs uppercase tracking-luxury transition hover:bg-white/10"
+              className="py-3.5 sm:py-4 px-7 sm:px-8 border-2 border-white/30 text-white hover:border-gold hover:text-gold-bright font-bold text-xs uppercase tracking-luxury transition hover:bg-white/10"
             >
               <Phone className="w-4 h-4 inline-block mr-2 -mt-0.5 text-gold-bright" />
               <span>Call {HOTEL_INFO.phone}</span>

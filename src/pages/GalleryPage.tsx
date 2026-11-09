@@ -5,7 +5,8 @@ import {
   Sparkles, 
   MessageCircle, 
   CheckCircle2, 
-  ArrowRight 
+  ArrowRight,
+  Image as ImageIcon
 } from 'lucide-react';
 import { GALLERY_ITEMS, HOTEL_INFO, getWhatsAppUrl } from '../data/hotelData';
 import { LightboxModal } from '../components/LightboxModal';
@@ -20,6 +21,11 @@ export const GalleryPage: React.FC = () => {
   const filteredItems = selectedCategory === 'All'
     ? GALLERY_ITEMS
     : GALLERY_ITEMS.filter((item) => item.category.toLowerCase() === selectedCategory.toLowerCase());
+
+  const getCategoryCount = (cat: string) => {
+    if (cat === 'All') return GALLERY_ITEMS.length;
+    return GALLERY_ITEMS.filter(item => item.category.toLowerCase() === cat.toLowerCase()).length;
+  };
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
@@ -47,34 +53,44 @@ export const GalleryPage: React.FC = () => {
           </h1>
           <div className="w-20 h-[1px] bg-gold mx-auto mb-4" />
           <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto font-sans leading-relaxed">
-            Explore authentic photographs of Hotel Madurai's guestrooms, dining facilities, and prime Udaipur surroundings.
+            Authentic photographs of Hotel Madurai's guestrooms, multi-cuisine dining facilities, and prime Udaipole surroundings.
           </p>
         </div>
       </section>
 
       {/* Photo Gallery Section */}
-      <section className="py-20">
+      <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-14">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-6 py-2.5 text-xs uppercase tracking-luxury font-bold transition duration-200 border ${
-                  selectedCategory === cat
-                    ? 'bg-gold border-gold text-[#141414] shadow-md'
-                    : 'bg-white border-gold/30 text-gray-700 hover:border-gold hover:text-dark'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Category Filter Pills with Item Counts */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12 sm:mb-14">
+            {categories.map((cat) => {
+              const count = getCategoryCount(cat);
+              if (count === 0 && cat !== 'All') return null;
+
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 sm:px-5 py-2 sm:py-2.5 text-xs uppercase tracking-luxury font-bold transition duration-200 border cursor-pointer flex items-center space-x-1.5 ${
+                    selectedCategory === cat
+                      ? 'bg-gold border-gold text-[#141414] shadow-md'
+                      : 'bg-white border-gold/30 text-gray-700 hover:border-gold hover:text-dark'
+                  }`}
+                >
+                  <span>{cat}</span>
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                    selectedCategory === cat ? 'bg-black/20 text-black' : 'bg-gray-100 text-gray-500'
+                  }`}>
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Photos Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredItems.map((item, idx) => (
               <div 
                 key={item.id}
@@ -98,7 +114,7 @@ export const GalleryPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-6">
+                <div className="p-5 sm:p-6">
                   <h3 className="font-serif text-lg font-bold text-dark group-hover:text-gold transition mb-1.5">
                     {item.title}
                   </h3>
@@ -116,9 +132,9 @@ export const GalleryPage: React.FC = () => {
       </section>
 
       {/* Video Gallery Section */}
-      <section className="py-24 bg-white border-t border-gold/20">
+      <section className="py-20 sm:py-24 bg-white border-t border-gold/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs uppercase tracking-luxury text-gold font-bold block mb-2">
               Motion Media
             </span>
@@ -126,7 +142,7 @@ export const GalleryPage: React.FC = () => {
               Video Gallery & Property Tour
             </h2>
             <div className="w-16 h-[1px] bg-gold mx-auto my-4" />
-            <p className="text-sm text-gray-600 font-sans">
+            <p className="text-sm text-gray-600 font-sans leading-relaxed">
               Immerse yourself in the ambient atmosphere of Hotel Madurai and our prime Lakecity location.
             </p>
           </div>
@@ -136,7 +152,7 @@ export const GalleryPage: React.FC = () => {
             <div className="bg-[#FAF8F5] border border-gold/30 shadow-luxury overflow-hidden hover:border-gold transition">
               <div className="relative aspect-video bg-dark flex items-center justify-center group overflow-hidden">
                 <img
-                  src="/images/room-super-deluxe-large.jpg"
+                  src="/images/room-super-deluxe-main.jpg"
                   alt="Hotel Madurai Tour"
                   className="w-full h-full object-cover opacity-65 transition duration-700 group-hover:scale-106"
                 />
@@ -144,7 +160,7 @@ export const GalleryPage: React.FC = () => {
                   href={getWhatsAppUrl("Property Video Walkthrough Request")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/20 transition"
+                  className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/20 transition cursor-pointer"
                   aria-label="Request video walkthrough"
                 >
                   <div className="w-16 h-16 rounded-full bg-gold/90 text-dark flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition">
@@ -155,7 +171,7 @@ export const GalleryPage: React.FC = () => {
                   Guest Suites Tour
                 </div>
               </div>
-              <div className="p-7">
+              <div className="p-6 sm:p-7">
                 <h4 className="font-serif text-xl font-bold text-dark mb-2">
                   Hotel Madurai Room Walkthrough
                 </h4>
@@ -186,7 +202,7 @@ export const GalleryPage: React.FC = () => {
                   href={getWhatsAppUrl("Udaipur Sightseeing Guide Video")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/20 transition"
+                  className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/20 transition cursor-pointer"
                   aria-label="Request sightseeing video"
                 >
                   <div className="w-16 h-16 rounded-full bg-gold/90 text-dark flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition">
@@ -197,7 +213,7 @@ export const GalleryPage: React.FC = () => {
                   Udaipur Highlights
                 </div>
               </div>
-              <div className="p-7">
+              <div className="p-6 sm:p-7">
                 <h4 className="font-serif text-xl font-bold text-dark mb-2">
                   Nearby Udaipur Attractions
                 </h4>
