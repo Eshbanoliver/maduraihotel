@@ -62,7 +62,7 @@ madurai/
 └── vite.config.ts          # Vite build and plugin configuration
 ```
 
----
+
 
 ## ⚡ Key Technical Features
 
